@@ -2,6 +2,7 @@
 #include <string> //Biblioteca necessária para a criação de arrays na tipagem string
 #include <windows.h> //Biblioteca necessária para a acentuação no programa
 #include <cstdlib> //Biblioteca necessária para a limpa de linhas no código
+#include <algorithm> //Biblioteca necessária para transformar caracteres minúsculos em maisculos
 
 using namespace std;
 
@@ -14,10 +15,10 @@ int main() {
 	//Arrays para facilitar na programação de caracterização de personagem
 	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
 	string classe[5] = { "Guerreiro", "Mago", "Assassino", "Bárbaro", "Druida" };
-	string arma;
+	string arma, escolhaRaca;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
-	int vida = 0, estus = 0, estamina = 0, mana = 0, reflexo = 0, escolhaRaca = 0, arrayEscolha = 0;
+	int vida = 0, estus = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0;
 
 	//Introdução à criação de personagem, utilizo o cin.get() para captar o "enter" do jogador e utilizo o system("cls") para limpar o console
 	cout << "Bem vindo ao meu primeiro RPG de turno!";
@@ -37,7 +38,7 @@ int main() {
 		cin >> escolhaRaca;
 
 		
-	} while (escolhaRaca != "humano" || escolhaRaca != "anão" || escolhaRaca != "draconiano" || escolhaRaca != "vampiro" || escolhaRaca != "elfo")
+	} while (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo");
 
 		return 0;
 }
