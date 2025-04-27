@@ -37,6 +37,14 @@ int main() {
 		cout << "\n";
 		cin >> escolhaRaca;
 
+		//Utilizado para transformar todos os caracteres em minúsculo
+		transform(escolhaRaca.begin(), escolhaRaca.end(), escolhaRaca.begin(), ::tolower);
+
+		if (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo") {
+
+			cout << "Seleção inválida, por favor escolha uma das classes listadas!" << endl;
+
+		}
 		
 	} while (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo");
 
