@@ -4,4 +4,6 @@ O estilo de combate é em turno, o nome "rpg5Hrs" vem do desafio inicial, o qual
 Minha meta é este ser um código o qual me gere conhecimento e desafio a partir da linguagem c++ para a criação de jogos
 
 Atualizações diárias:
-26/06/2025 - 
+26/06/2025 - Pontos melhorados: Configurei a recepção da resposta à escolha da classe do jogador.
+             Pontos a melhorar: 1. Criar um loop para a resposta de escolha de classe.
+                                2. Configurar a reposta à classe para que a resposta se classifique "como classeRaca" sem que o jogador precise se preocupar com caracteres maiúsculos ou minúsculos. 
