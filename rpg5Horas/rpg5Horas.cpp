@@ -28,7 +28,9 @@ int main() {
 	//Nesse caso utilizo um loop pelo for para imprimir as raças na tela do jogador 
 	cout << "Escolha sua raça:\n\n";
 	for (arrayEscolha = 0; arrayEscolha < 5; arrayEscolha++) {
+
 		cout << racas[arrayEscolha] << endl;
+
 	}
 
 	//Utilizo um loop para garantir que pelo menos uma raça seja escolhida sem erros
@@ -40,6 +42,7 @@ int main() {
 		//Utilizado para transformar todos os caracteres em minúsculo
 		transform(escolhaRaca.begin(), escolhaRaca.end(), escolhaRaca.begin(), ::tolower);
 
+		//Utilizo o if para que seja impresso uma mensagem de "seleção inválida", assim avisando ao jogador que sua raça não foi identificada
 		if (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo") {
 
 			cout << "Seleção inválida, por favor escolha uma das classes listadas!" << endl;
@@ -47,6 +50,14 @@ int main() {
 		}
 		
 	} while (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo");
+
+	//Agora inicio a seleção de classe a partir do mesmo loop criado para raças
+	cout << "Escolha sua classe:\n\n";
+	for (arrayEscolha = 0;arrayEscolha < 5; arrayEscolha++) {
+
+		cout << classe[arrayEscolha] << endl;
+
+	}
 
 		return 0;
 }
