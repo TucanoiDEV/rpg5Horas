@@ -6,7 +6,7 @@ Minha meta é este ser um código o qual me gere conhecimento e desafio a partir
 Atualizações diárias:
 26/04/2025 
 - Pontos melhorados: 1. Configurei a recepção da resposta à escolha da classe do jogador.
-- 
+  
 - Pontos a melhorar: 1. Criar um loop para a resposta de escolha de classe.
                      2. Configurar a reposta à classe para que a resposta se classifique "como classeRaca" sem que o jogador precise se preocupar com caracteres maiúsculos ou minúsculos. 
                                 
