@@ -56,9 +56,6 @@ int main() {
 		//Utilizado para transformar todos os caracteres em minúsculo
 		transform(escolhaRaca.begin(), escolhaRaca.end(), escolhaRaca.begin(), ::tolower);
 
-		//Utilizo o loop do-while para garantir que o jogador não bugue o console
-		do{
-
 			//Utilizo o if para que seja impresso uma mensagem de "seleção inválida", assim avisando ao jogador que sua raça não foi identificada
 			if (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo") {
 
@@ -68,7 +65,6 @@ int main() {
 				system("cls");
 
 			}
-		} while (!entrada.empty());
 		
 	} while (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo");
 	system("cls");
