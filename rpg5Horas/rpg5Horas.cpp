@@ -15,14 +15,27 @@ int main() {
 	//Arrays para facilitar na programação de caracterização de personagem
 	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
 	string classe[5] = { "Guerreiro", "Mago", "Assassino", "Bárbaro", "Druida" };
-	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2;
+	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2, entrada;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
 	int vida = 0, estus = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0;
 
-	//Introdução à criação de personagem, utilizo o cin.get() para captar o "enter" do jogador e utilizo o system("cls") para limpar o console
-	cout << "Bem vindo ao meu primeiro RPG de turno!";
-	cin.get();
+	//Utilizo o loop "do-while" para garantir que o jogador não bugue o console a partir da digitação
+	do{
+
+		//Introdução à criação de personagem, utilizo o cin.get() para captar o "enter" do jogador e utilizo o system("cls") para limpar o console
+		cout << "Bem vindo ao meu primeiro RPG de turno!" << endl;
+		getline(cin, entrada);
+		//Utilizo o if para garantir que o jogador não vai digitar algo ao invés da tecla "ENTER"
+		if (!entrada.empty()) {
+
+			cout << "Você digitou algo! Por favor, apenas aperte ENTER sem escrever nada." << endl;
+			cin.ignore();
+			system("cls");
+
+		}
+
+	} while (!entrada.empty());
 	system("cls");
 
 	//Utilizo um loop para garantir que pelo menos uma raça seja escolhida sem erros
@@ -44,14 +57,17 @@ int main() {
 		transform(escolhaRaca.begin(), escolhaRaca.end(), escolhaRaca.begin(), ::tolower);
 
 		//Utilizo o if para que seja impresso uma mensagem de "seleção inválida", assim avisando ao jogador que sua raça não foi identificada
-		if (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo") {
+		do{
 
-			cout << "\n\nSeleção inválida, por favor escolha uma das classes listadas!" << endl;
-			cin.ignore();
-			cin.get();
-			system("cls");
+			if (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo") {
 
-		}
+				cout << "\n\nSeleção inválida, por favor escolha uma das classes listadas!\n[Pressione ENTER]" << endl;
+				cin.ignore();
+				cin.get();
+				system("cls");
+
+			}
+		} while (!entrada.empty());
 		
 	} while (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo");
 	system("cls");
@@ -77,7 +93,7 @@ int main() {
 		//Utilizo o if para que seja impresso uma mensagem de "seleção inválida", assim avisando ao jogador que sua classe não foi identificada
 		if (escolhaClasse != "guerreiro" && escolhaClasse != "mago" && escolhaClasse != "assassino" && escolhaClasse != "bárbaro" && escolhaClasse != "druida") {
 
-			cout << "\n\nSeleção inválida, por favor escolha uma das classes listadas!" << endl;
+			cout << "\n\nSeleção inválida, por favor escolha uma das classes listadas!\n[Pressione ENTER]" << endl;
 			cin.ignore();
 			cin.get();
 			system("cls");
