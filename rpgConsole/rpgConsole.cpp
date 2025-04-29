@@ -9,6 +9,7 @@ using namespace std;
 //Função necessária para realizar o switch nas raças
 enum Racas { HUMANO, ANAO, DRACONIANO, VAMPIRO, ELFO, INVALIDA };
 
+//Realizo uma atribuição de cada raça para um enum, na expectativa de assemelhar o comando switch a strings
 Racas getRaca(string escolhaRaca) {
 
 	if (escolhaRaca == "humano") return HUMANO;
@@ -119,7 +120,7 @@ int main() {
 	system("cls");
 
 	//Utilizo um loop "do-while" para descobrir o nome do personagem do jogador e garantir que o nome foi digitado da maneira correta
-	do{
+	do {
 
 		//Faço a verificação a partir de duas perguntas na esperança que o jogador responda o mesmo que elas para assim gerar o fim do loop
 		cout << "Digite o nome do seu personagem: ";
@@ -127,33 +128,35 @@ int main() {
 		cout << "\nConfirme o nome do seu personagem: ";
 		cin >> nomePersonagem2;
 
-			//Utilizo um if para informar que a confirmação de nome está diferente
-			if (nomePersonagem != nomePersonagem2) {
+		//Utilizo um if para informar que a confirmação de nome está diferente
+		if (nomePersonagem != nomePersonagem2) {
 
-				//Uilizo o loop neste caso para evitar bugs no console a partir da digitação do jogador
-				do{
-					cout << "\n\nOs nomes digitados são diferentes.\nPor favor insira o mesmo nome e lembre-se de levar em consideração letras maiúsculas e minúsculas!\nPressione [ENTER]";
-					cin.ignore();
-					getline(cin, entrada);
-					system("cls");
-				} while (!entrada.empty());
+			//Uilizo o loop neste caso para evitar bugs no console a partir da digitação do jogador
+			do {
+				cout << "\n\nOs nomes digitados são diferentes.\nPor favor insira o mesmo nome e lembre-se de levar em consideração letras maiúsculas e minúsculas!\nPressione [ENTER]";
+				cin.ignore();
+				getline(cin, entrada);
+				system("cls");
+			} while (!entrada.empty());
 
-			}
+		}
 
 	} while (nomePersonagem != nomePersonagem2);
 
+	//Trago a função de transcrição de raças para criar um switch
 	Racas racaEscolhida = getRaca(escolhaRaca);
 
+	//Utilizo o switch para atribuir os respectivos elementos de cada raça
 	switch (racaEscolhida) {
 
-	case HUMANO: 
+	case HUMANO:
 
 		vida += 100;
 		mana += 100;
 		estamina += 100;
 		reflexo += 100;
 		forca += 100;
-		passiva == equilibrio
+		passiva = equilibrio;
 
 	}
 
