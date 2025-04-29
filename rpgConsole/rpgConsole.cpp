@@ -3,6 +3,7 @@
 #include <windows.h> //Biblioteca necessária para a acentuação no programa
 #include <cstdlib> //Biblioteca necessária para a limpa de linhas no código
 #include <algorithm> //Biblioteca necessária para transformar caracteres minúsculos em maisculos
+#include <random> //Biblioteca necessária para gerar número randomicos
 
 using namespace std;
 
@@ -33,11 +34,7 @@ int main() {
 	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2, entrada, passiva;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
-	int vida = 0, estus = 5, estusMana = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0;
-
-	//Variáveis relacionadas a passiva
-
-	string equilibrio = "Passiva de raça Humana: Todos os seus atributos recebem 100 pontos";
+	int vida = 0, estus = 5, estusMana = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0, cura = 0;
 
 	//Utilizo o loop "do-while" para garantir que o jogador não bugue o console a partir da digitação
 	do{
@@ -156,8 +153,40 @@ int main() {
 		estamina += 100;
 		reflexo += 100;
 		forca += 100;
-		passiva = equilibrio;
+		passiva = "Passiva de raça Humano: Todos os seus atributos recebem 100 pontos";
 
+		break;
+
+	case ANAO:
+
+		forca += 300;
+		passiva = "Passiva de raça Anão: Seu personagem recebe 300 pontos adicionais de força";
+		
+		break;
+
+	case DRACONIANO:
+
+		vida += 150;
+		danoMagico += 75;
+		passiva = "Passiva de raça Draconiano: Seu personagem recebe 150 pontos adicionais de vida e 150 pontos de dano mágico";
+
+		break;
+
+	case VAMPIRO:
+
+		vida += 100;
+		mana += 250;
+		cura = 30;
+		passiva = "Passiva de raça Vampiro: Seu personagem recebe 100 pontos adicionais de vida, 250 pontos adicionais de mana e seu personagem cura 30 pontos por ataque";
+
+		break;
+
+	case ELFO:
+
+		mana += 500;
+		passiva = "Passiva de raça Elfo: Seu personagem recebe 500 pontos adicionais de mana";
+
+		break;
 	}
 
 		return 0;
