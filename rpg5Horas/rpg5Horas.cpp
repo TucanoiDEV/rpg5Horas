@@ -6,6 +6,20 @@
 
 using namespace std;
 
+//Função necessária para realizar o switch nas raças
+enum Racas { HUMANO, ANAO, DRACONIANO, VAMPIRO, ELFO, INVALIDA };
+
+Racas getRaca(string escolhaRaca) {
+
+	if (escolhaRaca == "humano") return HUMANO;
+	if (escolhaRaca == "anão") return ANAO;
+	if (escolhaRaca == "draconiano") return DRACONIANO;
+	if (escolhaRaca == "vampiro") return VAMPIRO;
+	if (escolhaRaca == "elfo") return ELFO;
+	return INVALIDA;
+
+}
+
 int main() {
 
 	//Comando utilizado para o programa ler acentos
@@ -15,10 +29,14 @@ int main() {
 	//Arrays para facilitar na programação de caracterização de personagem
 	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
 	string classe[5] = { "Guerreiro", "Mago", "Assassino", "Bárbaro", "Druida" };
-	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2, entrada;
+	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2, entrada, passiva;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
-	int vida = 0, estus = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0;
+	int vida = 0, estus = 5, estusMana = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0;
+
+	//Variáveis relacionadas a passiva
+
+	string equilibrio = "Passiva de raça Humana: Todos os seus atributos recebem 100 pontos";
 
 	//Utilizo o loop "do-while" para garantir que o jogador não bugue o console a partir da digitação
 	do{
@@ -112,7 +130,7 @@ int main() {
 			//Utilizo um if para informar que a confirmação de nome está diferente
 			if (nomePersonagem != nomePersonagem2) {
 
-				//Uilizo o loop neste caso para evitar bbugs no console a partir da diigitação do jogador
+				//Uilizo o loop neste caso para evitar bugs no console a partir da digitação do jogador
 				do{
 					cout << "\n\nOs nomes digitados são diferentes.\nPor favor insira o mesmo nome e lembre-se de levar em consideração letras maiúsculas e minúsculas!\nPressione [ENTER]";
 					cin.ignore();
@@ -123,6 +141,21 @@ int main() {
 			}
 
 	} while (nomePersonagem != nomePersonagem2);
+
+	Racas racaEscolhida = getRaca(escolhaRaca);
+
+	switch (racaEscolhida) {
+
+	case HUMANO: 
+
+		vida += 100;
+		mana += 100;
+		estamina += 100;
+		reflexo += 100;
+		forca += 100;
+		passiva == equilibrio
+
+	}
 
 		return 0;
 }
