@@ -31,3 +31,13 @@ Pontos melhorados:
 
 Pontos a melhorar:
 - Preciso me certificar de que os loops operem de maneira funcional e com o mínimo de erros             
+
+29/04/2025
+
+Pontos melhorados:
+- Consegui criar um switch para cada classe e raça utilizando funções enum
+- Consegui criar passivas e atribuir elementos únicos às raças
+
+Pontos a melhorar: 
+- Criar um switch com cases respectivos a cada classe
+- Considerar a possibilidade de adicionar passivas às classes (provavelmente não)
