@@ -7,8 +7,9 @@
 
 using namespace std;
 
-//Função necessária para realizar o switch nas raças
+//Função necessária para realizar o switch nas raças e classes
 enum Racas { HUMANO, ANAO, DRACONIANO, VAMPIRO, ELFO, INVALIDA };
+enum Classes { GUERREIRO, MAGO, ASSASSINO, BARBARO, DRUIDA, INCORRETA };
 
 //Realizo uma atribuição de cada raça para um enum, na expectativa de assemelhar o comando switch a strings
 static Racas getRaca(string escolhaRaca) {
@@ -22,10 +23,6 @@ static Racas getRaca(string escolhaRaca) {
 
 }
 
-//Função necessária para realizar o switch nas raças
-enum Classes { GUERREIRO, MAGO, ASSASSINO, BARBARO, DRUIDA, INCORRETA };
-
-//Realizo uma atribuição de cada classe para um enum, na expectativa de assemelhar o comando switch a strings
 static Classes getClasse(string escolhaClasse) {
 
 	if (escolhaClasse == "guerreiro") return GUERREIRO;
@@ -37,11 +34,17 @@ static Classes getClasse(string escolhaClasse) {
 
 }
 
-int main() {
+void configurarConsole() {
 
 	//Comando utilizado para o programa ler acentos
 	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8);
+
+}
+
+int main() {
+
+	configurarConsole();
 
 	//Arrays para facilitar na programação de caracterização de personagem
 	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
@@ -218,7 +221,7 @@ int main() {
 		forca += 800;
 		atkN1 += forca + armaN;
 		atkN2 += 100;
-		atkN3;
+		atkN3; //Número não definido, pois será utilizado uma função randômica no combate
 		atkS1 = "Ataque com espada";
 		atkS2 = "Bloquear";
 		atkS3 = "Revitalizar";
@@ -235,7 +238,7 @@ int main() {
 		danoMagico += 420;
 		atkN1 += danoMagico + armaN;
 		atkN2 += 450;
-		atkN3;
+		atkN3; //Número não definido, pois será utilizado uma função randômica no combate
 		atkS1 = "Bola de fogo";
 		atkS2 = "Barreira mágica";
 		atkS3 = "Benção de cura";
@@ -280,7 +283,7 @@ int main() {
 		mana = 750;
 		atkN1 += forca;
 		atkN2 += 75;
-		atkN3;
+		atkN3; //Número não definido, pois será utilizado uma função randômica no combate
 		atkS1 = "Ataque humano";
 		atkS2 = "Cura da natureza";
 		atkS3 = "Concentração";
