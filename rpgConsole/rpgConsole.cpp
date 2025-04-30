@@ -49,7 +49,7 @@ int main() {
 	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
-	int vida = 0, estus = 5, estusMana = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0, cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0;
+	int vida = 0, estus = 5, estusMana = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0, cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0;
 
 	//Utilizo o loop "do-while" para garantir que o jogador não bugue o console a partir da digitação
 	do{
@@ -209,6 +209,83 @@ int main() {
 
 	//Mesmo processo que o switch de raça
 	switch (classeEscolhida) {
+
+	case GUERREIRO:
+
+		vida += 500;
+		estamina += 300;
+		reflexo += 20;
+		forca += 800;
+		atkN1 += forca + armaN;
+		atkN2 += 100;
+		atkN3;
+		atkS1 = "Ataque com espada";
+		atkS2 = "Bloquear";
+		atkS3 = "Revitalizar";
+
+		break;
+
+	case MAGO:
+
+		vida += 250;
+		estamina += 450;
+		mana += 700;
+		forca += 100;
+		reflexo += 15;
+		danoMagico += 420;
+		atkN1 += danoMagico + armaN;
+		atkN2 += 450;
+		atkN3;
+		atkS1 = "Bola de fogo";
+		atkS2 = "Barreira mágica";
+		atkS3 = "Benção de cura";
+
+		break;
+
+	case ASSASSINO:
+
+		vida += 450;
+		estamina += 700;
+		forca += 375;
+		reflexo += 75;
+		atkN1 += 150 + forca;
+		atkN2 += 350;
+		atkN3 += 25;
+		atkS1 = "Apunhalada";
+		atkS2 = "Rasgo";
+		atkS3 = "Hemorragia";
+
+		break;
+
+	case BARBARO:
+
+		vida += 1200;
+		estamina += 500;
+		forca += 795;
+		atkN1 += forca + armaN;
+		atkN2 += forca + armaN * 2;
+		atkN3 += forca / 3;
+		atkS1 = "Corte";
+		atkS2 = "Corte brutal";
+		atkS3 = "Berserk";
+
+		break;
+
+	case DRUIDA:
+
+		vida += 195;
+		estamina += 200;
+		forca += 110;
+		reflexo += 10;
+		mana = 750;
+		atkN1 += forca;
+		atkN2 += 75;
+		atkN3;
+		atkS1 = "Ataque humano";
+		atkS2 = "Cura da natureza";
+		atkS3 = "Concentração";
+
+		break;
 
 	}
 
