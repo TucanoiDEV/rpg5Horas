@@ -3,7 +3,7 @@
 #include <windows.h> //Biblioteca necessária para a acentuação no programa
 #include <cstdlib> //Biblioteca necessária para a limpa de linhas no código
 #include <algorithm> //Biblioteca necessária para transformar caracteres minúsculos em maisculos
-#include <random> //Biblioteca necessária para gerar número randomicos
+#include <random> //Biblioteca necessária para gerar seleções randomicas
 
 using namespace std;
 
@@ -11,7 +11,7 @@ using namespace std;
 enum Racas { HUMANO, ANAO, DRACONIANO, VAMPIRO, ELFO, INVALIDA };
 
 //Realizo uma atribuição de cada raça para um enum, na expectativa de assemelhar o comando switch a strings
-Racas getRaca(string escolhaRaca) {
+static Racas getRaca(string escolhaRaca) {
 
 	if (escolhaRaca == "humano") return HUMANO;
 	if (escolhaRaca == "anão") return ANAO;
@@ -19,6 +19,21 @@ Racas getRaca(string escolhaRaca) {
 	if (escolhaRaca == "vampiro") return VAMPIRO;
 	if (escolhaRaca == "elfo") return ELFO;
 	return INVALIDA;
+
+}
+
+//Função necessária para realizar o switch nas raças
+enum Classes { GUERREIRO, MAGO, ASSASSINO, BARBARO, DRUIDA, INCORRETA };
+
+//Realizo uma atribuição de cada classe para um enum, na expectativa de assemelhar o comando switch a strings
+static Classes getClasse(string escolhaClasse) {
+
+	if (escolhaClasse == "guerreiro") return GUERREIRO;
+	if (escolhaClasse == "mago") return MAGO;
+	if (escolhaClasse == "assassino") return ASSASSINO;
+	if (escolhaClasse == "bárbaro") return BARBARO;
+	if (escolhaClasse == "druida") return DRUIDA;
+	return INCORRETA;
 
 }
 
@@ -31,10 +46,10 @@ int main() {
 	//Arrays para facilitar na programação de caracterização de personagem
 	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
 	string classe[5] = { "Guerreiro", "Mago", "Assassino", "Bárbaro", "Druida" };
-	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2, entrada, passiva;
+	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
-	int vida = 0, estus = 5, estusMana = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0, cura = 0;
+	int vida = 0, estus = 5, estusMana = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0, cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0;
 
 	//Utilizo o loop "do-while" para garantir que o jogador não bugue o console a partir da digitação
 	do{
@@ -187,6 +202,14 @@ int main() {
 		passiva = "Passiva de raça Elfo: Seu personagem recebe 500 pontos adicionais de mana";
 
 		break;
+	}
+
+	//Mesmo processo que o enum Raça
+	Classes classeEscolhida = getClasse(escolhaClasse);
+
+	//Mesmo processo que o switch de raça
+	switch (classeEscolhida) {
+
 	}
 
 		return 0;
