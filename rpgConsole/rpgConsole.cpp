@@ -42,20 +42,10 @@ void configurarConsole() {
 
 }
 
-int main() {
-
-	configurarConsole();
-
-	//Arrays para facilitar na programação de caracterização de personagem
-	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
-	string classe[5] = { "Guerreiro", "Mago", "Assassino", "Bárbaro", "Druida" };
-	string arma, escolhaRaca, escolhaClasse, nomePersonagem, nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3;
-
-	//Variáveis iniciais para mecânicas de combate do jogo
-	int vida = 0, estus = 5, estusMana = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0, cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0;
+void exibirIntroducao(string &entrada) {
 
 	//Utilizo o loop "do-while" para garantir que o jogador não bugue o console a partir da digitação
-	do{
+	do {
 
 		//Introdução à criação de personagem, utilizo o cin.get() para captar o "enter" do jogador e utilizo o system("cls") para limpar o console
 		cout << "Bem vindo ao meu primeiro RPG de turno!" << endl;
@@ -72,8 +62,12 @@ int main() {
 	} while (!entrada.empty());
 	system("cls");
 
+}
+
+void selecionarRaca(int& arrayEscolha, string& escolhaRaca, string racas[]) {
+
 	//Utilizo um loop para garantir que pelo menos uma raça seja escolhida sem erros
-	do{
+	do {
 
 		//Nesse caso utilizo um loop pelo for para imprimir as raças na tela do jogador 
 		cout << "Escolha sua raça:\n\n";
@@ -90,18 +84,22 @@ int main() {
 		//Utilizado para transformar todos os caracteres em minúsculo
 		transform(escolhaRaca.begin(), escolhaRaca.end(), escolhaRaca.begin(), ::tolower);
 
-			//Utilizo o if para que seja impresso uma mensagem de "seleção inválida", assim avisando ao jogador que sua raça não foi identificada
-			if (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo") {
+		//Utilizo o if para que seja impresso uma mensagem de "seleção inválida", assim avisando ao jogador que sua raça não foi identificada
+		if (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo") {
 
-				cout << "\n\nSeleção inválida, por favor escolha uma das classes listadas!\n[Pressione ENTER]" << endl;
-				cin.ignore();
-				cin.get();
-				system("cls");
+			cout << "\n\nSeleção inválida, por favor escolha uma das classes listadas!\n[Pressione ENTER]" << endl;
+			cin.ignore();
+			cin.get();
+			system("cls");
 
-			}
-		
+		}
+
 	} while (escolhaRaca != "humano" && escolhaRaca != "anão" && escolhaRaca != "draconiano" && escolhaRaca != "vampiro" && escolhaRaca != "elfo");
 	system("cls");
+
+}
+
+void selecionarClasse(int& arrayEscolha, string& escolhaClasse, string classe[]) {
 
 	//Utilizo um loop para garantir que pelo menos uma classe seja escolhida sem erros
 	do {
@@ -134,6 +132,10 @@ int main() {
 	} while (escolhaClasse != "guerreiro" && escolhaClasse != "mago" && escolhaClasse != "assassino" && escolhaClasse != "bárbaro" && escolhaClasse != "druida");
 	system("cls");
 
+}
+
+void selecionarNome(string &nomePersonagem, string &nomePersonagem2, string &entrada) {
+
 	//Utilizo um loop "do-while" para descobrir o nome do personagem do jogador e garantir que o nome foi digitado da maneira correta
 	do {
 
@@ -158,8 +160,12 @@ int main() {
 
 	} while (nomePersonagem != nomePersonagem2);
 
-	//Trago a função de transcrição de raças para criar um switch
-	Racas racaEscolhida = getRaca(escolhaRaca);
+}
+
+void switchRaca(int racaEscolhida,
+	int& vida, int& mana, int& estamina, int& reflexo, int& forca,
+	int& danoMagico, int& cura,
+	string& passiva) {
 
 	//Utilizo o switch para atribuir os respectivos elementos de cada raça
 	switch (racaEscolhida) {
@@ -179,7 +185,7 @@ int main() {
 
 		forca += 300;
 		passiva = "Passiva de raça Anão: Seu personagem recebe 300 pontos adicionais de força";
-		
+
 		break;
 
 	case DRACONIANO:
@@ -207,9 +213,12 @@ int main() {
 		break;
 	}
 
-	//Mesmo processo que o enum Raça
-	Classes classeEscolhida = getClasse(escolhaClasse);
+}
 
+void switchClasse(int classeEscolhida,
+	int& vida, int& estamina, int& mana, int& reflexo, int& forca,
+	int& danoMagico, int& atkN1, int& atkN2, int& atkN3, int armaN,
+	string& atkS1, string& atkS2, string& atkS3) {
 	//Mesmo processo que o switch de raça
 	switch (classeEscolhida) {
 
@@ -291,6 +300,41 @@ int main() {
 		break;
 
 	}
+
+}
+
+int main() {
+
+	configurarConsole();
+
+	//Arrays para facilitar na programação de caracterização de personagem
+	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
+	string classe[5] = { "Guerreiro", "Mago", "Assassino", "Bárbaro", "Druida" };
+	string arma, escolhaRaca, escolhaClasse, nomePersonagem,
+		nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3;
+
+	//Variáveis iniciais para mecânicas de combate do jogo
+	int vida = 0, estus = 5, estusMana = 0, estamina = 0,
+		mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0,
+		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0;
+
+	exibirIntroducao(entrada);
+
+	selecionarRaca(arrayEscolha, escolhaRaca, racas);
+
+	selecionarClasse(arrayEscolha, escolhaClasse, classe);
+
+	//Trago a função de transcrição de raças para criar um switch
+	Racas racaEscolhida = getRaca(escolhaRaca);
+
+	switchRaca(racaEscolhida, vida, mana, estamina, reflexo, forca, danoMagico, cura, passiva);
+
+	//Mesmo processo que o enum Raça
+	Classes classeEscolhida = getClasse(escolhaClasse);
+
+	switchClasse(classeEscolhida, vida, estamina, mana, reflexo, forca,
+		danoMagico, atkN1, atkN2, atkN3, armaN,
+		atkS1, atkS2, atkS3);
 
 		return 0;
 }
