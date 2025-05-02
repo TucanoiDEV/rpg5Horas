@@ -41,3 +41,15 @@ Pontos melhorados:
 Pontos a melhorar: 
 - Criar um switch com cases respectivos a cada classe
 - Considerar a possibilidade de adicionar passivas às classes (provavelmente não)
+
+30/04/2025
+
+Pontos melhorados:
+- Consegui criar um switch para a parte de classes
+- Criei algumas novas funcionalidades, como ouro e funções de combate
+- Iniciei a modularização do código
+
+Pontos a melhorar:
+- Concluir a modularização do código
+- Aprender a trabalhar encima de variáveis randomicas
+- Organizar melhor minhas ideias
