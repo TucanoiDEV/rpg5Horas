@@ -310,25 +310,36 @@ void switchCombate() {
 	case GUERREIRO:
 
 		do {
-			
-			cout << "Ataques:\n" << "[" << atkS1 << "]\n" << "[" << atkS2 << "]\n" << "[" << atkS3 << "]\n" <<
-				"Qual será o seu ataque?";
+			cout << "Ataques disponíveis:\n";
+			cout << "[1] " << atkS1 << "\n";
+			cout << "[2] " << atkS2 << "\n";
+			cout << "[3] " << atkS3 << "\n";
+			cout << "Escolha o número do ataque: ";
 			cin >> dano;
 
-			if (dano == atkS1) {
+			if (dano = 1) {
+
+				atkN1 + forca + danoArma = danoNum;
 
 			}
 
-			else if(dano == atkS2) {
+			else if(dano = 2) {
+
+				danoNum == atkN2;
 
 			}
 
-			else if(dano == atkS3) {
+			else if(dano = 3) {
+
+				danoNum == atkN2;
 
 			}
 
 			else {
 
+				cout << "Ataque não identificado, por favor selecione um ataque novamente [Enter]";
+				cin.get();
+				continue; //Volta ao início do loop
 			}
 
 		} while (vidaChefe > 0);
@@ -345,12 +356,12 @@ int main() {
 	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
 	string classe[5] = { "Guerreiro", "Mago", "Assassino", "Bárbaro", "Druida" };
 	string arma, escolhaRaca, escolhaClasse, nomePersonagem,
-		nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3;
+		nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3, dano;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
 	int vida = 0, estus = 5, estusMana = 0, estamina = 0,
 		mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0,
-		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0;
+		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0, danoNum = 0, danoArma = 0;
 
 	exibirIntroducao(entrada);
 
