@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string> //Biblioteca necessária para a criação de arrays na tipagem string
 #include <windows.h> //Biblioteca necessária para a acentuação no programa
-#include <cstdlib> //Biblioteca necessária para a limpa de linhas no código
+#include <cstdlib> //Biblioteca necessária para a limpa de linhas no código e para o comando "rand()" (randomizer)
 #include <algorithm> //Biblioteca necessária para transformar caracteres minúsculos em maisculos
-#include <random> //Biblioteca necessária para gerar seleções randomicas
+#include <ctime> //Biblioteca necessária para gerar seleções randomicas, pois fornece sementes
 
 using namespace std;
 
@@ -303,8 +303,13 @@ void switchClasse(int classeEscolhida,
 
 }
 
-void switchCombate() {
+//Crio uma função para realizar os combates
+void switchCombate(int classeEscolhida, int& vida, int& vidaChefe, 
+     const string& atkS1, const string& atkS2, const string& atkS3, 
+     int atkN1, int atkN2, int atkN3, int forca, int danoArma, int dano, int danoNum) {
 
+	/*Utilizo um "switch" juntamente com loops "do-while" para o combate, 
+	considerando as habilidades de cada classe*/
 	switch (classeEscolhida) {
 
 	case GUERREIRO:
@@ -317,21 +322,21 @@ void switchCombate() {
 			cout << "Escolha o número do ataque: ";
 			cin >> dano;
 
-			if (dano = 1) {
+			if (dano == 1) {
 
-				atkN1 + forca + danoArma = danoNum;
-
-			}
-
-			else if(dano = 2) {
-
-				danoNum == atkN2;
+				danoNum = atkN1 + forca + danoArma; //Ataque padrão
 
 			}
 
-			else if(dano = 3) {
+			else if(dano == 2) {
 
-				danoNum == atkN2;
+				danoChefe = 0; //Será futuramente atribuido ao dano bloqueador
+
+			}
+
+			else if(dano == 3) {
+
+				cura(vida); //Chama a função cura para realizar o revitalizar
 
 			}
 
@@ -342,9 +347,30 @@ void switchCombate() {
 				continue; //Volta ao início do loop
 			}
 
+			cout << "Você causou " << danoNum << " de dano!";
+			vidaChefe -= danoNum;
+			cout << "O chefe está com " << vidaChefe << " de vida";
+
 		} while (vidaChefe > 0);
+		break;
+
 
 	}
+
+}
+
+void cura(int& vida) {
+
+	// Inicializa o gerador de números aleatórios com base no tempo atual
+	srand(time(0));
+
+	// Gera um número aleatório de 0 a 50
+	int revitalizar = rand() % 51;
+
+	cout << "Você revitalizou" << revitalizar << " pontos de vida" << endl;
+
+	vida += revitalizar
+	cout << "Vida total: " << vida;
 
 }
 
@@ -361,7 +387,8 @@ int main() {
 	//Variáveis iniciais para mecânicas de combate do jogo
 	int vida = 0, estus = 5, estusMana = 0, estamina = 0,
 		mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0,
-		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0, danoNum = 0, danoArma = 0;
+		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0, danoNum = 0, danoArma = 0,
+		danoChefe = 0;
 
 	exibirIntroducao(entrada);
 
