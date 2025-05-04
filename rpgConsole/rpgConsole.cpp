@@ -303,6 +303,40 @@ void switchClasse(int classeEscolhida,
 
 }
 
+void switchCombate() {
+
+	switch (classeEscolhida) {
+
+	case GUERREIRO:
+
+		do {
+			
+			cout << "Ataques:\n" << "[" << atkS1 << "]\n" << "[" << atkS2 << "]\n" << "[" << atkS3 << "]\n" <<
+				"Qual será o seu ataque?";
+			cin >> dano;
+
+			if (dano == atkS1) {
+
+			}
+
+			else if(dano == atkS2) {
+
+			}
+
+			else if(dano == atkS3) {
+
+			}
+
+			else {
+
+			}
+
+		} while (vidaChefe > 0);
+
+	}
+
+}
+
 int main() {
 
 	configurarConsole();
