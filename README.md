@@ -62,3 +62,11 @@ Pontos melhorados:
 Pontos a melhorar: 
 - Atribuição e impressão dos atributos dos personagens
 - Realizar uma estratégia para atribuição de variáveis de combate
+
+04/05/2025
+
+Pontos melhorados:
+- Começei a criar uma função para utilizar no combate
+
+Pontos a melhorar:
+- Concluir a função de combate
