@@ -53,3 +53,12 @@ Pontos a melhorar:
 - Concluir a modularização do código
 - Aprender a trabalhar encima de variáveis randomicas
 - Organizar melhor minhas ideias
+
+02/05/2025
+
+Pontos melhorados:
+- Modularização completa da criação de personagens
+
+Pontos a melhorar: 
+- Atribuição e impressão dos atributos dos personagens
+- Realizar uma estratégia para atribuição de variáveis de combate
