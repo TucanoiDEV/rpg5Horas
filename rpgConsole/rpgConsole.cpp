@@ -160,6 +160,8 @@ void selecionarNome(string &nomePersonagem, string &nomePersonagem2, string &ent
 
 	} while (nomePersonagem != nomePersonagem2);
 
+	system("cls");
+
 }
 
 void switchRaca(int racaEscolhida,
@@ -303,6 +305,45 @@ void switchClasse(int classeEscolhida,
 
 }
 
+void atributos(const string& nomePersonagem, const string& escolhaRaca, const string& escolhaClasse,
+	string& arma, const string& atkS1, const string& atkS2, const string& atkS3,
+	int vida, int estamina, int mana, int forca, int reflexo, int ouro, int estus, int estusMana,
+	const string& passiva) {
+
+	cout << "Seus atributos:\n\n" << endl;
+	cout << "Seu nome - " << nomePersonagem << endl;
+	cout << "Sua raça - " << escolhaRaca << endl;
+	cout << "Sua classe - " << escolhaClasse << endl;
+	cout << "Sua arma - " << arma << endl;
+	cout << "Suas habilidades - " << atkS1 <<" - "<< atkS2 << " - " << atkS3 << endl;
+	cout << "Pontos de vida - " << vida << endl;
+	cout << "Pontos de estamina - " << estamina << endl;
+	cout << "Pontos de mana - " << mana << endl;
+	cout << "Pontos de força - " << forca << endl;
+	cout << "Pontos de reflexo - " << reflexo << endl;
+	cout << "Quantidade de ouro na bolsa - " << ouro << endl;
+	cout << "Frascos de cura - " << estus << endl;
+	cout << "Frascos de regeneração de mana - " << estusMana << endl;
+	cout << passiva << endl;
+
+}
+
+void cura(int& vida) {
+
+	// Inicializa o gerador de números aleatórios com base no tempo atual
+	srand(time(0));
+
+	// Gera um número aleatório de 0 a 50
+	int revitalizar = rand() % 51;
+
+	cout << "Você revitalizou" << revitalizar << " pontos de vida" << endl;
+	vida += revitalizar;
+	cout << "Vida total: " << vida;
+	cin.get();
+	system("cls");
+
+}
+
 //Crio uma função para realizar os combates
 void switchCombate(int classeEscolhida, int& vida, int& vidaChefe, 
      const string& atkS1, const string& atkS2, const string& atkS3, 
@@ -315,6 +356,9 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 	case GUERREIRO:
 
 		do {
+			
+			bool bloquear = false;
+
 			cout << "Ataques disponíveis:\n";
 			cout << "[1] " << atkS1 << "\n";
 			cout << "[2] " << atkS2 << "\n";
@@ -330,7 +374,7 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 
 			else if(dano == 2) {
 
-				danoChefe = 0; //Será futuramente atribuido ao dano bloqueador
+				bloquear = true;
 
 			}
 
@@ -349,7 +393,13 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 
 			cout << "Você causou " << danoNum << " de dano!";
 			vidaChefe -= danoNum;
-			cout << "O chefe está com " << vidaChefe << " de vida";
+			cout << "O chefe está com " << vidaChefe << " de vida!";
+			cin.get();
+			system("cls");
+
+			cout << "É a vez de Artorias!";
+			cin.get();
+			system("cls");
 
 		} while (vidaChefe > 0);
 		break;
@@ -359,18 +409,19 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 
 }
 
-void cura(int& vida) {
+void danoArtorias(int& danoChefe) {
 
 	// Inicializa o gerador de números aleatórios com base no tempo atual
 	srand(time(0));
 
 	// Gera um número aleatório de 0 a 50
-	int revitalizar = rand() % 51;
+	int mortal = rand() % 4;
 
-	cout << "Você revitalizou" << revitalizar << " pontos de vida" << endl;
+	danoChefe = 70 * 3;
 
-	vida += revitalizar
-	cout << "Vida total: " << vida;
+	cout << "Artorias lhe deu " << mortal << " ataques com mortal(is).";
+	cin.get();
+	system("cls");
 
 }
 
@@ -407,6 +458,11 @@ int main() {
 	switchClasse(classeEscolhida, vida, estamina, mana, reflexo, forca,
 		danoMagico, atkN1, atkN2, atkN3, armaN,
 		atkS1, atkS2, atkS3);
+
+	selecionarNome(nomePersonagem, nomePersonagem2, entrada);
+
+	atributos(nomePersonagem, escolhaRaca, escolhaClasse, arma, atkS1, atkS2, atkS3,
+		vida, estamina, mana, forca, reflexo, ouro, estus, estusMana, passiva);
 
 		return 0;
 }
