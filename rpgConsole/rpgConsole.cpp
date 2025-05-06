@@ -344,10 +344,29 @@ void cura(int& vida) {
 
 }
 
+void danoArtorias(int& danoChefe, int& vida) {
+
+	// Inicializa o gerador de números aleatórios com base no tempo atual
+	srand(time(0));
+
+	// Gera um número aleatório de 0 a 4
+	int mortal = rand() % 4;
+
+	danoChefe = 70 * mortal;
+
+	cout << "Artorias lhe deu " << mortal << " ataques com mortal(is).";
+	cout << "Você recebeu: " << danoChefe << " de dano";
+	cout << "Sua vida atual é: " << vida;
+	vida -= danoChefe;
+	cin.get();
+	system("cls");
+
+}
+
 //Crio uma função para realizar os combates
 void switchCombate(int classeEscolhida, int& vida, int& vidaChefe, 
      const string& atkS1, const string& atkS2, const string& atkS3, 
-     int atkN1, int atkN2, int atkN3, int forca, int danoArma, int dano, int danoNum) {
+     int atkN1, int atkN2, int atkN3, int forca, int danoArma, int dano, int danoNum, int reflexo, int& danoChefe) {
 
 	/*Utilizo um "switch" juntamente com loops "do-while" para o combate, 
 	considerando as habilidades de cada classe*/
@@ -358,6 +377,7 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 		do {
 			
 			bool bloquear = false;
+			int ataqueRandom = 0;
 
 			cout << "Ataques disponíveis:\n";
 			cout << "[1] " << atkS1 << "\n";
@@ -401,6 +421,25 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 			cin.get();
 			system("cls");
 
+			srand(time(0));
+			int reflexoTeste = rand() % 301;
+			if (reflexoTeste > reflexo) {
+
+				srand(time(0));
+				int ataqueRandom = rand() % 3;
+				if (ataqueRandom == 0) {
+
+					danoArtorias(danoChefe, vida);
+
+				}
+
+			}
+			else {
+
+				cout << "Você desviou do ataque de Artorias!";
+
+			}
+
 		} while (vidaChefe > 0);
 		break;
 
@@ -409,21 +448,7 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 
 }
 
-void danoArtorias(int& danoChefe) {
 
-	// Inicializa o gerador de números aleatórios com base no tempo atual
-	srand(time(0));
-
-	// Gera um número aleatório de 0 a 50
-	int mortal = rand() % 4;
-
-	danoChefe = 70 * 3;
-
-	cout << "Artorias lhe deu " << mortal << " ataques com mortal(is).";
-	cin.get();
-	system("cls");
-
-}
 
 int main() {
 
