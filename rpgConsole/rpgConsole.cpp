@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iostream> //Biblioteca Padrão
 #include <string> //Biblioteca necessária para a criação de arrays na tipagem string
 #include <windows.h> //Biblioteca necessária para a acentuação no programa
 #include <cstdlib> //Biblioteca necessária para a limpa de linhas no código e para o comando "rand()" (randomizer)
