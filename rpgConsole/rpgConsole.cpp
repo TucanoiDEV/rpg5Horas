@@ -330,9 +330,6 @@ void atributos(const string& nomePersonagem, const string& escolhaRaca, const st
 
 void cura(int& vida) {
 
-	// Inicializa o gerador de números aleatórios com base no tempo atual
-	srand(time(0));
-
 	// Gera um número aleatório de 0 a 50
 	int revitalizar = rand() % 51;
 
@@ -344,18 +341,41 @@ void cura(int& vida) {
 
 }
 
-void danoArtorias(int& danoChefe, int& vida) {
-
-	// Inicializa o gerador de números aleatórios com base no tempo atual
-	srand(time(0));
+void danoArtorias1(int& danoChefe, int& vida) {
 
 	// Gera um número aleatório de 0 a 4
 	int mortal = rand() % 4;
 
 	danoChefe = 70 * mortal;
 
-	cout << "Artorias lhe deu " << mortal << " ataques com mortal(is).";
+	cout << "Artorias lhe dá " << mortal << " ataques com mortal(is).";
 	cout << "Você recebeu: " << danoChefe << " de dano";
+	cout << "Sua vida atual é: " << vida;
+	vida -= danoChefe;
+	cin.get();
+	system("cls");
+
+}
+
+void danoArtorias2(int& danoChefe, int& vida) {
+
+	// Gera um número aleatório de 100 a 350
+	danoChefe = rand() % 251 + 100;
+	cout << "Artorias gira com sua espada em sua direção!";
+	cout << "Você recebeu " << danoChefe << " de dano!";
+	cout << "Sua vida atual é: " << vida;
+	vida -= danoChefe;
+	cin.get();
+	system("cls");
+
+}
+
+void danoArtorias3(int& danoChefe, int& vida) {
+
+	// Gera um número aleatório de 100 a 350
+	danoChefe = rand() % 476 + 25;
+	cout << "Artorias joga matéria abissal em você!";
+	cout << "Você recebeu " << danoChefe << " de dano";
 	cout << "Sua vida atual é: " << vida;
 	vida -= danoChefe;
 	cin.get();
@@ -409,6 +429,7 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 				cout << "Ataque não identificado, por favor selecione um ataque novamente [Enter]";
 				cin.get();
 				continue; //Volta ao início do loop
+
 			}
 
 			cout << "Você causou " << danoNum << " de dano!";
@@ -421,18 +442,30 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 			cin.get();
 			system("cls");
 
-			srand(time(0));
 			int reflexoTeste = rand() % 301;
 			if (reflexoTeste > reflexo) {
 
-				srand(time(0));
 				int ataqueRandom = rand() % 3;
 				if (ataqueRandom == 0) {
 
-					danoArtorias(danoChefe, vida);
+					danoArtorias1(danoChefe, vida);
 
 				}
+				else if (ataqueRandom == 1) {
 
+					danoArtorias2(danoChefe, vida);
+
+				}
+				else if (ataqueRandom == 2) {
+
+					danoArtorias3(danoChefe, vida);
+
+				}
+				else {
+
+					cout << "Você desviou do golpe de Artorias!";
+
+				}
 			}
 			else {
 
@@ -451,6 +484,9 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 
 
 int main() {
+
+	// Inicializa o gerador de números aleatórios com base no tempo atual
+	srand(time(0));
 
 	configurarConsole();
 
