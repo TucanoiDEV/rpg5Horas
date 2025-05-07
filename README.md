@@ -79,3 +79,13 @@ Pontos melhorados:
 
 Pontos a melhorar:
 - Concluir a função de combate
+
+06/05/2025
+
+Pontos melhorados:
+- Finalizei a criação de funções para o inimigo Artorias
+- Conclui a primeira situação de combate para a classe guerreiro
+
+Pontos a melhorar:
+- Determinar os atributos de Artorias
+- Concluir a função de combate
