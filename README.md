@@ -89,3 +89,16 @@ Pontos melhorados:
 Pontos a melhorar:
 - Determinar os atributos de Artorias
 - Concluir a função de combate
+
+08/05/2025
+
+Pontos melhorados:
+- Criação de função para limpar o console
+- Criação de if no combate para a cura da classe vampiro
+- Criação de if na classe combate para bloqueio
+- Atribuição do comando "endl" para melhorar a interface do executável
+
+Pontos a melhorar:
+- Melhorar a configuração geral do switchCombate
+- Escrever um relatório geral para uma melhor orientação do projeto
+- Concluir a função de combate
