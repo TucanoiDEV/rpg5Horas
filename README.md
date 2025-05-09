@@ -1,11 +1,11 @@
 # Este é meu primeiro repositório em c++.
-## A função do programa seria simular um jogo padrão RPG.
-### O estilo de combate é em turno, o nome "rpg5Hrs" vem do desafio inicial, o qual era: criar um rpg em 5 horas, porém me empolguei um pouco no projeto e decidi continuá-lo sem me importar com o tempo.
-### Minha meta é este ser um código o qual me gere conhecimento e desafio a partir da linguagem c++ para a criação de jogos.
+#### A função do programa seria simular um jogo padrão RPG.
+#### O estilo de combate é em turno, o nome "rpg5Hrs" vem do desafio inicial, o qual era: criar um rpg em 5 horas, porém me empolguei um pouco no projeto e decidi continuá-lo sem me importar com o tempo.
+#### Minha meta é este ser um código o qual me gere conhecimento e desafio a partir da linguagem c++ para a criação de jogos.
 
 ## Relatório de funções e práticas que faltam ser aplicadas:
--> Devo criar 2 novos inimigos além de Artorias, seus nomes serão Ornstein/Smough (1 chefe em conjunto) e o outro boss será Sif.
-### Sif será um chefe em formato de cachorro que terá 3 ataques principais e uma mecânica de passiva de sangramento
+### Devo criar 2 novos inimigos além de Artorias, seus nomes serão Ornstein/Smough (1 chefe em conjunto) e o outro boss será Sif.
+#### -> Sif será um chefe em formato de cachorro que terá 3 ataques principais e uma mecânica de passiva de sangramento
 - Mordida: Ataque de mordida padrão que gera sangramento
 - Raiva: Gerador de buff que aumenta seu dano em 30%
 - Morte: Sif dá uma sequência de até 3 ataques, gerando sangramento em cada um
