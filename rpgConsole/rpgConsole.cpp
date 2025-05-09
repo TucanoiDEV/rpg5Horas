@@ -64,6 +64,13 @@ void exibirIntroducao(string &entrada) {
 
 }
 
+void limparConsole() {
+
+	cin.get(); // Espera o usuário apertar Enter
+	system("cls");  // Limpa a tela (no Windows)
+
+}
+
 void selecionarRaca(int& arrayEscolha, string& escolhaRaca, string racas[]) {
 
 	//Utilizo um loop para garantir que pelo menos uma raça seja escolhida sem erros
@@ -203,7 +210,7 @@ void switchRaca(int racaEscolhida,
 		vida += 100;
 		mana += 250;
 		cura = 30;
-		passiva = "Passiva de raça Vampiro: Seu personagem recebe 100 pontos adicionais de vida, 250 pontos adicionais de mana e seu personagem cura 30 pontos por ataque";
+		passiva = "Passiva de raça Vampiro: Seu personagem recebe 100 pontos adicionais de vida, 250 pontos adicionais de mana e seu personagem cura de 0 a 50 pontos por rodada";
 
 		break;
 
@@ -325,6 +332,7 @@ void atributos(const string& nomePersonagem, const string& escolhaRaca, const st
 	cout << "Frascos de cura - " << estus << endl;
 	cout << "Frascos de regeneração de mana - " << estusMana << endl;
 	cout << passiva << endl;
+	limparConsole();
 
 }
 
@@ -335,9 +343,8 @@ void cura(int& vida) {
 
 	cout << "Você revitalizou" << revitalizar << " pontos de vida" << endl;
 	vida += revitalizar;
-	cout << "Vida total: " << vida;
-	cin.get();
-	system("cls");
+	cout << "Vida total: " << vida << endl;
+	limparConsole();
 
 }
 
@@ -348,12 +355,11 @@ void danoArtorias1(int& danoChefe, int& vida) {
 
 	danoChefe = 70 * mortal;
 
-	cout << "Artorias lhe dá " << mortal << " ataques com mortal(is).";
-	cout << "Você recebeu: " << danoChefe << " de dano";
-	cout << "Sua vida atual é: " << vida;
+	cout << "Artorias lhe dá " << mortal << " ataques com mortal(is)." << endl;
+	cout << "Você recebeu: " << danoChefe << " de dano" << endl;
+	cout << "Sua vida atual é: " << vida << endl;
 	vida -= danoChefe;
-	cin.get();
-	system("cls");
+	limparConsole();
 
 }
 
@@ -361,12 +367,11 @@ void danoArtorias2(int& danoChefe, int& vida) {
 
 	// Gera um número aleatório de 100 a 350
 	danoChefe = rand() % 251 + 100;
-	cout << "Artorias gira com sua espada em sua direção!";
-	cout << "Você recebeu " << danoChefe << " de dano!";
-	cout << "Sua vida atual é: " << vida;
+	cout << "Artorias gira com sua espada em sua direção!" << endl;
+	cout << "Você recebeu " << danoChefe << " de dano!" << endl;
+	cout << "Sua vida atual é: " << vida << endl;
 	vida -= danoChefe;
-	cin.get();
-	system("cls");
+	limparConsole();
 
 }
 
@@ -378,15 +383,14 @@ void danoArtorias3(int& danoChefe, int& vida) {
 	cout << "Você recebeu " << danoChefe << " de dano";
 	cout << "Sua vida atual é: " << vida;
 	vida -= danoChefe;
-	cin.get();
-	system("cls");
+	limparConsole();
 
 }
 
 //Crio uma função para realizar os combates
 void switchCombate(int classeEscolhida, int& vida, int& vidaChefe, 
      const string& atkS1, const string& atkS2, const string& atkS3, 
-     int atkN1, int atkN2, int atkN3, int forca, int danoArma, int dano, int danoNum, int reflexo, int& danoChefe) {
+     int atkN1, int atkN2, int atkN3, int forca, int danoArma, int dano, int danoNum, int reflexo, int& danoChefe, const string& escolhaRaca) {
 
 	/*Utilizo um "switch" juntamente com loops "do-while" para o combate, 
 	considerando as habilidades de cada classe*/
@@ -395,16 +399,17 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 	case GUERREIRO:
 
 		do {
-			
-			bool bloquear = false;
+
 			int ataqueRandom = 0;
 
+			cout << "Sua vida atual: " << vida << endl;
 			cout << "Ataques disponíveis:\n";
-			cout << "[1] " << atkS1 << "\n";
-			cout << "[2] " << atkS2 << "\n";
-			cout << "[3] " << atkS3 << "\n";
+			cout << "[1] " << atkS1 << endl;
+			cout << "[2] " << atkS2 << endl;
+			cout << "[3] " << atkS3 << endl;
 			cout << "Escolha o número do ataque: ";
 			cin >> dano;
+			limparConsole();
 
 			if (dano == 1) {
 
@@ -427,7 +432,7 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 			else {
 
 				cout << "Ataque não identificado, por favor selecione um ataque novamente [Enter]";
-				cin.get();
+				limparConsole();
 				continue; //Volta ao início do loop
 
 			}
@@ -435,12 +440,18 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 			cout << "Você causou " << danoNum << " de dano!";
 			vidaChefe -= danoNum;
 			cout << "O chefe está com " << vidaChefe << " de vida!";
-			cin.get();
-			system("cls");
+			limparConsole();
 
 			cout << "É a vez de Artorias!";
-			cin.get();
-			system("cls");
+			limparConsole();
+
+			if (bloquear = true) {
+
+				cout << "Porém você bloqueou sua investida" << endl;
+				bloquear = false;
+				limparConsole(); 
+
+			}
 
 			int reflexoTeste = rand() % 301;
 			if (reflexoTeste > reflexo) {
@@ -463,13 +474,23 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 				}
 				else {
 
-					cout << "Você desviou do golpe de Artorias!";
+					cout << "Você desviou do golpe de Artorias!" << endl;
+					limparConsole();
 
 				}
 			}
 			else {
 
-				cout << "Você desviou do ataque de Artorias!";
+				cout << "Você desviou do ataque de Artorias!" << endl;
+				limparConsole();
+
+			}
+
+			if (escolhaRaca == "vampiro") {
+
+				cout << "Você recebeu 30 pontos de vida devido à sua passiva de raça" << endl;
+				vida += 30;
+				limparConsole();
 
 			}
 
@@ -500,7 +521,7 @@ int main() {
 	int vida = 0, estus = 5, estusMana = 0, estamina = 0,
 		mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0,
 		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0, danoNum = 0, danoArma = 0,
-		danoChefe = 0;
+		danoChefe = 0, vidaChefe = 5000;
 
 	exibirIntroducao(entrada);
 
