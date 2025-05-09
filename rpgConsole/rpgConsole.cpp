@@ -354,11 +354,10 @@ void danoArtorias1(int& danoChefe, int& vida) {
 	int mortal = rand() % 4;
 
 	danoChefe = 70 * mortal;
-
+	vida -= danoChefe;
 	cout << "Artorias lhe dá " << mortal << " ataques com mortal(is)." << endl;
 	cout << "Você recebeu: " << danoChefe << " de dano" << endl;
 	cout << "Sua vida atual é: " << vida << endl;
-	vida -= danoChefe;
 	limparConsole();
 
 }
@@ -367,10 +366,10 @@ void danoArtorias2(int& danoChefe, int& vida) {
 
 	// Gera um número aleatório de 100 a 350
 	danoChefe = rand() % 251 + 100;
+	vida -= danoChefe;
 	cout << "Artorias gira com sua espada em sua direção!" << endl;
 	cout << "Você recebeu " << danoChefe << " de dano!" << endl;
 	cout << "Sua vida atual é: " << vida << endl;
-	vida -= danoChefe;
 	limparConsole();
 
 }
@@ -379,51 +378,65 @@ void danoArtorias3(int& danoChefe, int& vida) {
 
 	// Gera um número aleatório de 100 a 350
 	danoChefe = rand() % 476 + 25;
-	cout << "Artorias joga matéria abissal em você!";
-	cout << "Você recebeu " << danoChefe << " de dano";
-	cout << "Sua vida atual é: " << vida;
 	vida -= danoChefe;
+	cout << "Artorias joga matéria abissal em você!" << endl;
+	cout << "Você recebeu " << danoChefe << " de dano" << endl;
+	cout << "Sua vida atual é: " << vida << endl;
 	limparConsole();
 
 }
 
 //Crio uma função para realizar os combates
-void switchCombate(int classeEscolhida, int& vida, int& vidaChefe, 
-     const string& atkS1, const string& atkS2, const string& atkS3, 
-     int atkN1, int atkN2, int atkN3, int forca, int danoArma, int dano, int danoNum, int reflexo, int& danoChefe, const string& escolhaRaca) {
+void switchCombate(int classeEscolhida, int& vida,
+	const string& atkS1, const string& atkS2, const string& atkS3,
+	int atkN1, int atkN2, int atkN3, int forca, int danoArma, int& ataqueEscolhido, int reflexo, int& danoChefe, const string& escolhaRaca) {
 
-	/*Utilizo um "switch" juntamente com loops "do-while" para o combate, 
+	/*Utilizo um "switch" juntamente com loops "do-while" para o combate,
 	considerando as habilidades de cada classe*/
 	switch (classeEscolhida) {
 
 	case GUERREIRO:
 
+		int vidaChefe = 5000;
+
 		do {
 
+			if (vida <= 1) {
+
+				cout << "Você Morreu." << endl;
+				limparConsole();
+				break;
+
+			}
+
+			bool bloquear = false;
 			int ataqueRandom = 0;
+			int danoNum = 0;
+			ataqueEscolhido = 0;
+
 
 			cout << "Sua vida atual: " << vida << endl;
 			cout << "Ataques disponíveis:\n";
 			cout << "[1] " << atkS1 << endl;
 			cout << "[2] " << atkS2 << endl;
 			cout << "[3] " << atkS3 << endl;
-			cout << "Escolha o número do ataque: ";
-			cin >> dano;
+			cout << "Escolha o número do ataque: " << endl;
+			cin >> ataqueEscolhido;
 			limparConsole();
 
-			if (dano == 1) {
+			if (ataqueEscolhido == 1) {
 
-				danoNum = atkN1 + forca + danoArma; //Ataque padrão
+				danoNum = atkN1; //Ataque padrão
 
 			}
 
-			else if(dano == 2) {
+			else if (ataqueEscolhido == 2) {
 
 				bloquear = true;
 
 			}
 
-			else if(dano == 3) {
+			else if (ataqueEscolhido == 3) {
 
 				cura(vida); //Chama a função cura para realizar o revitalizar
 
@@ -437,19 +450,18 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 
 			}
 
-			cout << "Você causou " << danoNum << " de dano!";
+			cout << "Você causou " << danoNum << " de dano!" << endl;
 			vidaChefe -= danoNum;
-			cout << "O chefe está com " << vidaChefe << " de vida!";
+			cout << "O chefe está com " << vidaChefe << " de vida!" << endl;
 			limparConsole();
 
-			cout << "É a vez de Artorias!";
+			cout << "É a vez de Artorias!" << endl;
 			limparConsole();
 
-			if (bloquear = true) {
+			if (bloquear) {
 
 				cout << "Porém você bloqueou sua investida" << endl;
-				bloquear = false;
-				limparConsole(); 
+				limparConsole();
 
 			}
 
@@ -497,10 +509,10 @@ void switchCombate(int classeEscolhida, int& vida, int& vidaChefe,
 		} while (vidaChefe > 0);
 		break;
 
-
 	}
 
 }
+
 
 
 
@@ -515,13 +527,13 @@ int main() {
 	string racas[5] = { "Humano", "Anão", "Draconiano", "Vampiro", "Elfo" };
 	string classe[5] = { "Guerreiro", "Mago", "Assassino", "Bárbaro", "Druida" };
 	string arma, escolhaRaca, escolhaClasse, nomePersonagem,
-		nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3, dano;
+		nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
 	int vida = 0, estus = 5, estusMana = 0, estamina = 0,
 		mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0,
-		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0, danoNum = 0, danoArma = 0,
-		danoChefe = 0, vidaChefe = 5000;
+		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0, danoArma = 0,
+		danoChefe = 0, ataqueEscolhido = 0;
 
 	exibirIntroducao(entrada);
 
@@ -545,6 +557,12 @@ int main() {
 
 	atributos(nomePersonagem, escolhaRaca, escolhaClasse, arma, atkS1, atkS2, atkS3,
 		vida, estamina, mana, forca, reflexo, ouro, estus, estusMana, passiva);
+
+	if (escolhaClasse == "guerreiro") {
+		switchCombate(classeEscolhida, vida,
+			atkS1, atkS2, atkS3,
+			atkN1, atkN2, atkN3, forca, danoArma, reflexo, ataqueEscolhido, danoChefe, escolhaRaca);
+	}
 
 		return 0;
 }
