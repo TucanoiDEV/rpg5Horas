@@ -475,8 +475,10 @@ void switchArtorias(int classeEscolhida, int& vida,
 			}
 
 			if(danoNum != 0) {
+
 				cout << "Você causou " << danoNum << " de dano!" << endl;
 				vidaChefe -= danoNum;
+
 			}
 			cout << "O chefe está com " << vidaChefe << " de vida!" << endl;
 			limparConsole();
@@ -491,6 +493,7 @@ void switchArtorias(int classeEscolhida, int& vida,
 
 			}
 			else {
+
 				int reflexoTeste = rand() % 301;
 				if (reflexoTeste > reflexo) {
 
@@ -516,6 +519,7 @@ void switchArtorias(int classeEscolhida, int& vida,
 						limparConsole();
 
 					}
+
 				}
 				else {
 
@@ -617,8 +621,10 @@ void switchArtorias(int classeEscolhida, int& vida,
 				}
 
 				if (danoNum != 0) {
+
 					cout << "Você causou " << danoNum << " de dano!" << endl;
 					vidaChefe -= danoNum;
+
 				}
 				cout << "O chefe está com " << vidaChefe << " de vida!" << endl;
 				limparConsole();
@@ -633,6 +639,7 @@ void switchArtorias(int classeEscolhida, int& vida,
 
 				}
 				else {
+
 					int reflexoTeste = rand() % 301;
 					if (reflexoTeste > reflexo) {
 
@@ -658,6 +665,7 @@ void switchArtorias(int classeEscolhida, int& vida,
 							limparConsole();
 
 						}
+
 					}
 					else {
 
@@ -701,9 +709,9 @@ int main() {
 		nomePersonagem2, entrada, passiva, atkS1, atkS2, atkS3;
 
 	//Variáveis iniciais para mecânicas de combate do jogo
-	int vida = 0, estus = 5, estusMana = 0, estamina = 0,
-		mana = 0, reflexo = 0, arrayEscolha = 0, forca = 0, danoMagico = 0,
-		cura = 0, atkN1 = 0, atkN2 = 0, atkN3 = 0, ouro = 1000, armaN = 0, danoArma = 0,
+	int vida = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, 
+		forca = 0, danoMagico = 0, cura = 0, atkN1 = 0, atkN2 = 0, 
+		atkN3 = 0, ouro = 1000, armaN = 0, danoArma = 0,
 		danoChefe = 0, ataqueEscolhido = 0;
 
 	exibirIntroducao(entrada);
