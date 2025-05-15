@@ -341,7 +341,7 @@ void cura(int& vida) {
 	// Gera um número aleatório de 0 a 50
 	int revitalizar = rand() % 51;
 
-	cout << "Você revitalizou" << revitalizar << " pontos de vida" << endl;
+	cout << "Você revitalizou " << revitalizar << " pontos de vida" << endl;
 	vida += revitalizar;
 	cout << "Vida total: " << vida << endl;
 	limparConsole();
@@ -414,15 +414,33 @@ void switchCombate(int classeEscolhida, int& vida,
 			int danoNum = 0;
 			ataqueEscolhido = 0;
 
+			do{
+				cout << "Sua vida atual: " << vida << endl;
+				cout << "Ataques disponíveis:\n";
+				cout << "[1] " << atkS1 << endl;
+				cout << "[2] " << atkS2 << endl;
+				cout << "[3] " << atkS3 << endl;
+				cout << "Escolha o número do ataque: " << endl;
+				cin >> ataqueEscolhido;
+				limparConsole();
 
-			cout << "Sua vida atual: " << vida << endl;
-			cout << "Ataques disponíveis:\n";
-			cout << "[1] " << atkS1 << endl;
-			cout << "[2] " << atkS2 << endl;
-			cout << "[3] " << atkS3 << endl;
-			cout << "Escolha o número do ataque: " << endl;
-			cin >> ataqueEscolhido;
-			limparConsole();
+				//Crio este loop para garantir que o jogador não digite nenhum caractere/número que não está presente nas opções
+				if (cin.fail()) {
+					cin.clear();            // limpa o erro
+					cin.ignore(1000, '\n'); // descarta a entrada inválida
+					cout << "Entrada inválida. Por favor digite um número entre 1 e 3." << endl;
+					limparConsole();
+					continue;
+				}
+
+				if (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3) {
+
+					cout << "Ataque não identificado";
+					limparConsole();
+
+				}
+
+			} while (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3);
 
 			if (ataqueEscolhido == 1) {
 
@@ -458,52 +476,53 @@ void switchCombate(int classeEscolhida, int& vida,
 			cout << "É a vez de Artorias!" << endl;
 			limparConsole();
 
-			if (bloquear) {
+			if (bloquear == true) {
 
 				cout << "Porém você bloqueou sua investida" << endl;
 				limparConsole();
 
 			}
+			else {
+				int reflexoTeste = rand() % 301;
+				if (reflexoTeste > reflexo) {
 
-			int reflexoTeste = rand() % 301;
-			if (reflexoTeste > reflexo) {
+					int ataqueRandom = rand() % 3;
+					if (ataqueRandom == 0) {
 
-				int ataqueRandom = rand() % 3;
-				if (ataqueRandom == 0) {
+						danoArtorias1(danoChefe, vida);
 
-					danoArtorias1(danoChefe, vida);
+					}
+					else if (ataqueRandom == 1) {
 
-				}
-				else if (ataqueRandom == 1) {
+						danoArtorias2(danoChefe, vida);
 
-					danoArtorias2(danoChefe, vida);
+					}
+					else if (ataqueRandom == 2) {
 
-				}
-				else if (ataqueRandom == 2) {
+						danoArtorias3(danoChefe, vida);
 
-					danoArtorias3(danoChefe, vida);
+					}
+					else {
 
+						cout << "Você desviou do golpe de Artorias!" << endl;
+						limparConsole();
+
+					}
 				}
 				else {
 
-					cout << "Você desviou do golpe de Artorias!" << endl;
+					cout << "Você desviou do ataque de Artorias!" << endl;
 					limparConsole();
 
 				}
-			}
-			else {
 
-				cout << "Você desviou do ataque de Artorias!" << endl;
-				limparConsole();
+				if (escolhaRaca == "vampiro") {
 
-			}
+					cout << "Você recebeu 30 pontos de vida devido à sua passiva de raça" << endl;
+					vida += 30;
+					limparConsole();
 
-			if (escolhaRaca == "vampiro") {
-
-				cout << "Você recebeu 30 pontos de vida devido à sua passiva de raça" << endl;
-				vida += 30;
-				limparConsole();
-
+				}
 			}
 
 		} while (vidaChefe > 0);
@@ -512,9 +531,6 @@ void switchCombate(int classeEscolhida, int& vida,
 	}
 
 }
-
-
-
 
 int main() {
 
