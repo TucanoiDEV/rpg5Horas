@@ -468,8 +468,10 @@ void switchCombate(int classeEscolhida, int& vida,
 
 			}
 
-			cout << "Você causou " << danoNum << " de dano!" << endl;
-			vidaChefe -= danoNum;
+			if(danoNum != 0) {
+				cout << "Você causou " << danoNum << " de dano!" << endl;
+				vidaChefe -= danoNum;
+			}
 			cout << "O chefe está com " << vidaChefe << " de vida!" << endl;
 			limparConsole();
 
