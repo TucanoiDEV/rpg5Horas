@@ -3,7 +3,7 @@
 #include <windows.h> //Biblioteca necessária para a acentuação no programa
 #include <cstdlib> //Biblioteca necessária para a limpa de linhas no código e para o comando "rand()" (randomizer)
 #include <algorithm> //Biblioteca necessária para transformar caracteres minúsculos em maisculos
-#include <ctime> //Biblioteca necessária para gerar seleções randomicas, pois fornece sementes
+#include <ctime> //Biblioteca necessária para gerar seleções randomicas, pois fornece sementes 
 
 using namespace std;
 
@@ -555,14 +555,11 @@ int main() {
 
 	selecionarNome(nomePersonagem, nomePersonagem2, entrada);
 
-	atributos(nomePersonagem, escolhaRaca, escolhaClasse, arma, atkS1, atkS2, atkS3,
-		vida, estamina, mana, forca, reflexo, ouro, estus, estusMana, passiva);
+	//atributos(nomePersonagem, escolhaRaca, escolhaClasse, arma, atkS1, atkS2, atkS3,
+		//vida, estamina, mana, forca, reflexo, ouro, estus, estusMana, passiva);
 
-	if (escolhaClasse == "guerreiro") {
-		switchCombate(classeEscolhida, vida,
-			atkS1, atkS2, atkS3,
-			atkN1, atkN2, atkN3, forca, danoArma, reflexo, ataqueEscolhido, danoChefe, escolhaRaca);
-	}
+	switchCombate(classeEscolhida, vida, atkS1, atkS2, atkS3, atkN1, atkN2, atkN3,
+		forca, danoArma, ataqueEscolhido, reflexo, danoChefe, escolhaRaca);
 
 		return 0;
 }
