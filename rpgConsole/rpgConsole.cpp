@@ -393,9 +393,10 @@ void danoArtorias3(int& danoChefe, int& vida) {
 }
 
 //Crio uma função para realizar os combates
-void switchArtorias(int classeEscolhida, int& vida,
+void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 	const string& atkS1, const string& atkS2, const string& atkS3,
-	int atkN1, int atkN2, int atkN3, int forca, int danoArma, int& ataqueEscolhido, int reflexo, int& danoChefe, const string& escolhaRaca) {
+	int atkN1, int atkN2, int atkN3, int forca, int danoArma, int& ataqueEscolhido, 
+	int reflexo, int& danoChefe, const string& escolhaRaca) {
 
 	/*Utilizo um "switch" juntamente com loops "do-while" para o combate,
 	considerando as habilidades de cada classe*/
@@ -422,6 +423,7 @@ void switchArtorias(int classeEscolhida, int& vida,
 
 			do{
 				cout << "Sua vida atual: " << vida << endl;
+				cout << "Sua estamina:" << estamina << endl;
 				cout << "Ataques disponíveis:\n";
 				cout << "[1] " << atkS1 << endl;
 				cout << "[2] " << atkS2 << endl;
@@ -450,19 +452,44 @@ void switchArtorias(int classeEscolhida, int& vida,
 
 			if (ataqueEscolhido == 1) {
 
-				danoNum = atkN1; //Ataque padrão
+				if(estamina >= 120) {
+
+					danoNum = atkN1; //Ataque padrão
+					estamina -= 120;
+
+				}
+				else {
+
+					cout << "Você não tem estamina o suficiente para este ataque!" << endl;
+					limparConsole();
+					continue;
+
+				}
 
 			}
 
 			else if (ataqueEscolhido == 2) {
 
 				bloquear = true;
+				estamina -= 20;
 
 			}
 
 			else if (ataqueEscolhido == 3) {
 
-				cura(vida); //Chama a função cura para realizar o revitalizar
+				if(estamina>=95) {
+
+					cura(vida); //Chama a função cura para realizar o revitalizar
+					estamina -= 95;
+
+				}
+				else {
+
+					cout << "Você não tem estamina o suficiente para este ataque!" << endl;
+					limparConsole();
+					continue;
+
+				}
 
 			}
 
@@ -537,160 +564,19 @@ void switchArtorias(int classeEscolhida, int& vida,
 				}
 			}
 
+			estamina += 50;
+			cout << "Você recebeu 50 pontos de estamina" << endl;
+			limparConsole();
+
 		} while (vidaChefe > 0);
 
 		if (vidaChefe <= 0) {
 
-			cout << "Você derrotou Artorias!!!";
+			cout << "Você derrotou Artorias!!!" << endl;
 
 		}
 		break;
 
-		case MAGO:
-
-			vidaChefe = 5000;
-
-			do {
-
-				if (vida <= 1) {
-
-					cout << "Você Morreu." << endl;
-					limparConsole();
-					break;
-
-				}
-
-				bool bloquear = false;
-				int ataqueRandom = 0;
-				int danoNum = 0;
-				ataqueEscolhido = 0;
-
-				do {
-					cout << "Sua vida atual: " << vida << endl;
-					cout << "Ataques disponíveis:\n";
-					cout << "[1] " << atkS1 << endl;
-					cout << "[2] " << atkS2 << endl;
-					cout << "[3] " << atkS3 << endl;
-					cout << "Escolha o número do ataque: " << endl;
-					cin >> ataqueEscolhido;
-					limparConsole();
-
-					//Crio este loop para garantir que o jogador não digite nenhum caractere/número que não está presente nas opções
-					if (cin.fail()) {
-						cin.clear();            // limpa o erro
-						cin.ignore(1000, '\n'); // descarta a entrada inválida
-						cout << "Entrada inválida. Por favor digite um número entre 1 e 3." << endl;
-						limparConsole();
-						continue;
-					}
-
-					if (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3) {
-
-						cout << "Ataque não identificado";
-						limparConsole();
-
-					}
-
-				} while (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3);
-
-				if (ataqueEscolhido == 1) {
-
-					danoNum = atkN1; //Ataque padrão
-					cout << "Você jogou uma bola de fogo em Artorias";
-
-				}
-
-				else if (ataqueEscolhido == 2) {
-
-					danoNum = atkN2
-
-				}
-
-				else if (ataqueEscolhido == 3) {
-
-					cura(vida); //Chama a função cura para realizar o revitalizar
-
-				}
-
-				else {
-
-					cout << "Ataque não identificado, por favor selecione um ataque novamente [Enter]";
-					limparConsole();
-					continue; //Volta ao início do loop
-
-				}
-
-				if (danoNum != 0) {
-
-					cout << "Você causou " << danoNum << " de dano!" << endl;
-					vidaChefe -= danoNum;
-
-				}
-				cout << "O chefe está com " << vidaChefe << " de vida!" << endl;
-				limparConsole();
-
-				cout << "É a vez de Artorias!" << endl;
-				limparConsole();
-
-				if (bloquear == true) {
-
-					cout << "Porém você bloqueou sua investida" << endl;
-					limparConsole();
-
-				}
-				else {
-
-					int reflexoTeste = rand() % 301;
-					if (reflexoTeste > reflexo) {
-
-						int ataqueRandom = rand() % 3;
-						if (ataqueRandom == 0) {
-
-							danoArtorias1(danoChefe, vida);
-
-						}
-						else if (ataqueRandom == 1) {
-
-							danoArtorias2(danoChefe, vida);
-
-						}
-						else if (ataqueRandom == 2) {
-
-							danoArtorias3(danoChefe, vida);
-
-						}
-						else {
-
-							cout << "Você desviou do golpe de Artorias!" << endl;
-							limparConsole();
-
-						}
-
-					}
-					else {
-
-						cout << "Você desviou do ataque de Artorias!" << endl;
-						limparConsole();
-
-					}
-
-					if (escolhaRaca == "vampiro") {
-
-						cout << "Você recebeu 30 pontos de vida devido à sua passiva de raça" << endl;
-						vida += 30;
-						limparConsole();
-
-					}
-				}
-
-			} while (vidaChefe > 0);
-
-			if (vidaChefe <= 0) {
-
-				cout << "Você derrotou Artorias!!!";
-
-			}
-			break;
 	}
 
 }
@@ -737,7 +623,7 @@ int main() {
 	//atributos(nomePersonagem, escolhaRaca, escolhaClasse, arma, atkS1, atkS2, atkS3,
 		//vida, estamina, mana, forca, reflexo, ouro, estus, estusMana, passiva);
 
-	switchArtorias(classeEscolhida, vida, atkS1, atkS2, atkS3, atkN1, atkN2, atkN3,
+	switchArtorias(classeEscolhida, vida, estamina, atkS1, atkS2, atkS3, atkN1, atkN2, atkN3,
 		forca, danoArma, ataqueEscolhido, reflexo, danoChefe, escolhaRaca);
 
 		return 0;
