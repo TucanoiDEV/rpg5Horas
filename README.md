@@ -123,6 +123,17 @@ Pontos melhorados:
 - Criação de if na classe combate para bloqueio
 - Atribuição do comando "endl" para melhorar a interface do executável
 
+15/05/2025
+
+Pontos melhorados:
+- Função de combate 90% concluída pela parte de guerreiro
+- Iniciei a função de combate com a classe mago
+- Criei uma função para dano mágico
+
+Pontos a melhorar:
+- Adicionamento de mecânica de estamina na função de combate
+- Organização em arquivos do código
+- Conclusão da função de ataque para mago
 Pontos a melhorar:
 - Melhorar a configuração geral do switchCombate
 - Escrever um relatório geral para uma melhor orientação do projeto
