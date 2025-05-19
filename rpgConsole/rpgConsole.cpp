@@ -404,7 +404,7 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 
 	case GUERREIRO:
 
-		int vidaChefe = 5000;
+		int vidaChefe = 5000; //Vida padrão do chefe Artorias
 
 		do {
 
@@ -460,6 +460,7 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 				}
 				else {
 
+					//Comando utilizado para verificar a quantidade de estamina
 					cout << "Você não tem estamina o suficiente para este ataque!" << endl;
 					limparConsole();
 					continue;
@@ -485,6 +486,7 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 				}
 				else {
 
+					//Comando utilizado para verificar a quantidade de estamina
 					cout << "Você não tem estamina o suficiente para este ataque!" << endl;
 					limparConsole();
 					continue;
@@ -495,12 +497,14 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 
 			else {
 
+				//Comando utilizado  para verificação do ataque utilizado
 				cout << "Ataque não identificado, por favor selecione um ataque novamente [Enter]";
 				limparConsole();
 				continue; //Volta ao início do loop
 
 			}
 
+			//If utilizado´para conferir se o personagem deu dano ou não e realiza a impressão da quantidade aplicada
 			if(danoNum != 0) {
 
 				cout << "Você causou " << danoNum << " de dano!" << endl;
@@ -521,6 +525,7 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 			}
 			else {
 
+				//If que invoca o ataque inimigo, em conjunto com a possibilidade de esquiva do jogador
 				int reflexoTeste = rand() % 301;
 				if (reflexoTeste > reflexo) {
 
@@ -557,6 +562,7 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 
 				if (escolhaRaca == "vampiro") {
 
+					//Mmomento em que a passiva da raça vampiro é aplicada
 					cout << "Você recebeu 30 pontos de vida devido à sua passiva de raça" << endl;
 					vida += 30;
 					limparConsole();
@@ -564,6 +570,7 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 				}
 			}
 
+			//Comando utilizado para adicionar estamina ao final do turno
 			estamina += 50;
 			cout << "Você recebeu 50 pontos de estamina" << endl;
 			limparConsole();
