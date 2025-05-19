@@ -134,7 +134,15 @@ Pontos a melhorar:
 - Adicionamento de mecânica de estamina na função de combate
 - Organização em arquivos do código
 - Conclusão da função de ataque para mago
-Pontos a melhorar:
 - Melhorar a configuração geral do switchCombate
 - Escrever um relatório geral para uma melhor orientação do projeto
 - Concluir a função de combate
+
+  17/05/2025
+
+Pontos melhorados:
+  - Conclusão de mecânica de estamina no combate da classe guerreiro
+
+Pontos a melhorar:
+- Conclusão da função de ataque para mago
+- Concluir a função de combate para as diversas classes
