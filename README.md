@@ -140,5 +140,9 @@ Pontos a melhorar:
 
   17/05/2025
 
-  Pontos melhorados:
+Pontos melhorados:
   - Conclusão de mecânica de estamina no combate da classe guerreiro
+
+Pontos a melhorar:
+- Conclusão da função de ataque para mago
+- Concluir a função de combate para as diversas classes
