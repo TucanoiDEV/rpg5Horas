@@ -632,10 +632,10 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 
 				if (ataqueEscolhido == 1) {
 
-					if (estamina >= 120) {
+					if (estamina >= 70 && mana >= 370) {
 
 						danoNum = atkN1; //Ataque padrão
-						estamina -= 120;
+						estamina -= 70;
 						mana -= 370;
 
 					}
@@ -700,7 +700,9 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 
 				if (bloquear == true) {
 
+					vida += 450;
 					cout << "Você adicionou 450 pontos de escudo com barreira mágica" << endl;
+					cout << "Sua vida atual é: " << vida << endl;
 					limparConsole();
 
 				}
@@ -753,6 +755,12 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 				estamina += 50;
 				cout << "Você recebeu 50 pontos de estamina" << endl;
 				limparConsole();
+
+				if (bloquear == true) {
+
+					vida -= 450 - ataqueRandom;
+
+				}
 
 			} while (vidaChefe > 0);
 
