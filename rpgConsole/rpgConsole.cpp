@@ -396,15 +396,13 @@ void danoArtorias3(int& danoChefe, int& vida) {
 void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 	const string& atkS1, const string& atkS2, const string& atkS3,
 	int atkN1, int atkN2, int atkN3, int forca, int danoArma, int& ataqueEscolhido, 
-	int reflexo, int& danoChefe, const string& escolhaRaca) {
+	int& vidaChefe, int reflexo, int& danoChefe, const string& escolhaRaca, int& mana) {
 
 	/*Utilizo um "switch" juntamente com loops "do-while" para o combate,
 	considerando as habilidades de cada classe*/
 	switch (classeEscolhida) {
 
 	case GUERREIRO:
-
-		int vidaChefe = 5000; //Vida padrão do chefe Artorias
 
 		do {
 
@@ -423,7 +421,7 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 
 			do{
 				cout << "Sua vida atual: " << vida << endl;
-				cout << "Sua estamina:" << estamina << endl;
+				cout << "Sua estamina: " << estamina << endl;
 				cout << "Ataques disponíveis:\n";
 				cout << "[1] " << atkS1 << endl;
 				cout << "[2] " << atkS2 << endl;
@@ -455,7 +453,8 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 				if(estamina >= 120) {
 
 					danoNum = atkN1; //Ataque padrão
-					estamina -= 120;
+					estamina -= 25;
+					mana -= 100;
 
 				}
 				else {
@@ -584,6 +583,186 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 		}
 		break;
 
+		case MAGO:
+
+			do {
+
+				if (vida <= 1) {
+
+					cout << "Você Morreu." << endl;
+					limparConsole();
+					break;
+
+				}
+
+				bool bloquear = false;
+				int ataqueRandom = 0;
+				int danoNum = 0;
+				ataqueEscolhido = 0;
+
+				do {
+					cout << "Sua vida atual: " << vida << endl;
+					cout << "Sua estamina: " << estamina << endl;
+					cout << "Sua mana: " << mana << endl;
+					cout << "Ataques disponíveis:\n";
+					cout << "[1] " << atkS1 << endl;
+					cout << "[2] " << atkS2 << endl;
+					cout << "[3] " << atkS3 << endl;
+					cout << "Escolha o número do ataque: " << endl;
+					cin >> ataqueEscolhido;
+					limparConsole();
+
+					//Crio este loop para garantir que o jogador não digite nenhum caractere/número que não está presente nas opções
+					if (cin.fail()) {
+						cin.clear();            // limpa o erro
+						cin.ignore(1000, '\n'); // descarta a entrada inválida
+						cout << "Entrada inválida. Por favor digite um número entre 1 e 3." << endl;
+						limparConsole();
+						continue;
+					}
+
+					if (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3) {
+
+						cout << "Ataque não identificado";
+						limparConsole();
+
+					}
+
+				} while (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3);
+
+				if (ataqueEscolhido == 1) {
+
+					if (estamina >= 120) {
+
+						danoNum = atkN1; //Ataque padrão
+						estamina -= 120;
+						mana -= 370;
+
+					}
+					else {
+
+						//Comando utilizado para verificar a quantidade de estamina
+						cout << "Você não tem estamina/mana o suficiente para este ataque!" << endl;
+						limparConsole();
+						continue;
+
+					}
+
+				}
+
+				else if (ataqueEscolhido == 2) {
+
+					bloquear = true;
+					mana -= 50;
+
+				}
+
+				else if (ataqueEscolhido == 3) {
+
+					if (estamina >= 95) {
+
+						cura(vida); //Chama a função cura para realizar o revitalizar
+						estamina -= 95;
+
+					}
+					else {
+
+						//Comando utilizado para verificar a quantidade de estamina
+						cout << "Você não tem estamina o suficiente para este ataque!" << endl;
+						limparConsole();
+						continue;
+
+					}
+
+				}
+
+				else {
+
+					//Comando utilizado  para verificação do ataque utilizado
+					cout << "Ataque não identificado, por favor selecione um ataque novamente [Enter]";
+					limparConsole();
+					continue; //Volta ao início do loop
+
+				}
+
+				//If utilizado´para conferir se o personagem deu dano ou não e realiza a impressão da quantidade aplicada
+				if (danoNum != 0) {
+
+					cout << "Você causou " << danoNum << " de dano!" << endl;
+					vidaChefe -= danoNum;
+
+				}
+				cout << "O chefe está com " << vidaChefe << " de vida!" << endl;
+				limparConsole();
+
+				cout << "É a vez de Artorias!" << endl;
+				limparConsole();
+
+				if (bloquear == true) {
+
+					cout << "Você adicionou 450 pontos de escudo com barreira mágica" << endl;
+					limparConsole();
+
+				}
+
+				//If que invoca o ataque inimigo, em conjunto com a possibilidade de esquiva do jogador
+				int reflexoTeste = rand() % 301;
+				if (reflexoTeste > reflexo) {
+
+					int ataqueRandom = rand() % 3;
+					if (ataqueRandom == 0) {
+
+						danoArtorias1(danoChefe, vida);
+
+					}
+					else if (ataqueRandom == 1) {
+
+						danoArtorias2(danoChefe, vida);
+
+					}
+					else if (ataqueRandom == 2) {
+
+						danoArtorias3(danoChefe, vida);
+
+					}
+					else {
+
+						cout << "Você desviou do golpe de Artorias!" << endl;
+						limparConsole();
+
+					}
+
+				}
+				else {
+
+					cout << "Você desviou do ataque de Artorias!" << endl;
+					limparConsole();
+
+				}
+
+				if (escolhaRaca == "vampiro") {
+
+					//Mmomento em que a passiva da raça vampiro é aplicada
+					cout << "Você recebeu 30 pontos de vida devido à sua passiva de raça" << endl;
+					vida += 30;
+					limparConsole();
+
+				}
+
+				//Comando utilizado para adicionar estamina ao final do turno
+				estamina += 50;
+				cout << "Você recebeu 50 pontos de estamina" << endl;
+				limparConsole();
+
+			} while (vidaChefe > 0);
+
+			if (vidaChefe <= 0) {
+
+				cout << "Você derrotou Artorias!!!" << endl;
+
+			}
+			break;
+
 	}
 
 }
@@ -605,7 +784,7 @@ int main() {
 	int vida = 0, estamina = 0, mana = 0, reflexo = 0, arrayEscolha = 0, 
 		forca = 0, danoMagico = 0, cura = 0, atkN1 = 0, atkN2 = 0, 
 		atkN3 = 0, ouro = 1000, armaN = 0, danoArma = 0,
-		danoChefe = 0, ataqueEscolhido = 0;
+		danoChefe = 0, ataqueEscolhido = 0, vidaChefe = 5000;
 
 	exibirIntroducao(entrada);
 
@@ -631,7 +810,7 @@ int main() {
 		//vida, estamina, mana, forca, reflexo, ouro, estus, estusMana, passiva);
 
 	switchArtorias(classeEscolhida, vida, estamina, atkS1, atkS2, atkS3, atkN1, atkN2, atkN3,
-		forca, danoArma, ataqueEscolhido, reflexo, danoChefe, escolhaRaca);
+		forca, danoArma, ataqueEscolhido,vidaChefe,  reflexo, danoChefe, escolhaRaca, mana);
 
 		return 0;
 }
