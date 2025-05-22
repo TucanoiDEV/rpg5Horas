@@ -694,6 +694,7 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 			//If utilizado para conferir se o personagem deu dano ou não e realiza a impressão da quantidade aplicada
 			if (danoNum != 0) {
 
+
 				cout << "Você causou " << danoNum << " de dano!" << endl;
 				vidaChefe -= danoNum;
 
@@ -750,7 +751,8 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 
 			//Comando utilizado para adicionar estamina ao final do turno
 			estamina += 50;
-			cout << "Você recebeu 50 pontos de estamina" << endl;
+			mana += 300;
+			cout << "Você recebeu 50 pontos de estamina e 300 pontos de mana" << endl;
 			limparConsole();
 
 			if (bloquear == true) {
