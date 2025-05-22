@@ -583,194 +583,193 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 		}
 		break;
 
-		case MAGO:
+	case MAGO:
 
-			do {
+		do {
 
-				if (vida <= 1) {
+			int vidaInicial = vida; // Salva a vida inicial do jogador
+			int vidaComEscudo = vida; // Para restaurar após o escudo
 
-					cout << "Você Morreu." << endl;
-					limparConsole();
-					break;
+			if (vida <= 1) {
 
-				}
-
-				bool bloquear = false;
-				int ataqueRandom = 0;
-				int danoNum = 0;
-				ataqueEscolhido = 0;
-
-				do {
-					cout << "Sua vida atual: " << vida << endl;
-					cout << "Sua estamina: " << estamina << endl;
-					cout << "Sua mana: " << mana << endl;
-					cout << "Ataques disponíveis:\n";
-					cout << "[1] " << atkS1 << endl;
-					cout << "[2] " << atkS2 << endl;
-					cout << "[3] " << atkS3 << endl;
-					cout << "Escolha o número do ataque: " << endl;
-					cin >> ataqueEscolhido;
-					limparConsole();
-
-					//Crio este loop para garantir que o jogador não digite nenhum caractere/número que não está presente nas opções
-					if (cin.fail()) {
-						cin.clear();            // limpa o erro
-						cin.ignore(1000, '\n'); // descarta a entrada inválida
-						cout << "Entrada inválida. Por favor digite um número entre 1 e 3." << endl;
-						limparConsole();
-						continue;
-					}
-
-					if (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3) {
-
-						cout << "Ataque não identificado";
-						limparConsole();
-
-					}
-
-				} while (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3);
-
-				if (ataqueEscolhido == 1) {
-
-					if (estamina >= 70 && mana >= 370) {
-
-						danoNum = atkN1; //Ataque padrão
-						estamina -= 70;
-						mana -= 370;
-
-					}
-					else {
-
-						//Comando utilizado para verificar a quantidade de estamina
-						cout << "Você não tem estamina/mana o suficiente para este ataque!" << endl;
-						limparConsole();
-						continue;
-
-					}
-
-				}
-
-				else if (ataqueEscolhido == 2) {
-
-					bloquear = true;
-					mana -= 50;
-
-				}
-
-				else if (ataqueEscolhido == 3) {
-
-					if (estamina >= 95) {
-
-						cura(vida); //Chama a função cura para realizar o revitalizar
-						estamina -= 95;
-
-					}
-					else {
-
-						//Comando utilizado para verificar a quantidade de estamina
-						cout << "Você não tem estamina o suficiente para este ataque!" << endl;
-						limparConsole();
-						continue;
-
-					}
-
-				}
-
-				else {
-
-					//Comando utilizado  para verificação do ataque utilizado
-					cout << "Ataque não identificado, por favor selecione um ataque novamente [Enter]";
-					limparConsole();
-					continue; //Volta ao início do loop
-
-				}
-
-				//If utilizado´para conferir se o personagem deu dano ou não e realiza a impressão da quantidade aplicada
-				if (danoNum != 0) {
-
-					cout << "Você causou " << danoNum << " de dano!" << endl;
-					vidaChefe -= danoNum;
-
-				}
-				cout << "O chefe está com " << vidaChefe << " de vida!" << endl;
+				cout << "Você Morreu." << endl;
 				limparConsole();
-
-				cout << "É a vez de Artorias!" << endl;
-				limparConsole();
-
-				if (bloquear == true) {
-
-					vida += 450;
-					cout << "Você adicionou 450 pontos de escudo com barreira mágica" << endl;
-					cout << "Sua vida atual é: " << vida << endl;
-					limparConsole();
-
-				}
-
-				//If que invoca o ataque inimigo, em conjunto com a possibilidade de esquiva do jogador
-				int reflexoTeste = rand() % 301;
-				if (reflexoTeste > reflexo) {
-
-					int ataqueRandom = rand() % 3;
-					if (ataqueRandom == 0) {
-
-						danoArtorias1(danoChefe, vida);
-
-					}
-					else if (ataqueRandom == 1) {
-
-						danoArtorias2(danoChefe, vida);
-
-					}
-					else if (ataqueRandom == 2) {
-
-						danoArtorias3(danoChefe, vida);
-
-					}
-					else {
-
-						cout << "Você desviou do golpe de Artorias!" << endl;
-						limparConsole();
-
-					}
-
-				}
-				else {
-
-					cout << "Você desviou do ataque de Artorias!" << endl;
-					limparConsole();
-
-				}
-
-				if (escolhaRaca == "vampiro") {
-
-					//Mmomento em que a passiva da raça vampiro é aplicada
-					cout << "Você recebeu 30 pontos de vida devido à sua passiva de raça" << endl;
-					vida += 30;
-					limparConsole();
-
-				}
-
-				//Comando utilizado para adicionar estamina ao final do turno
-				estamina += 50;
-				cout << "Você recebeu 50 pontos de estamina" << endl;
-				limparConsole();
-
-				if (bloquear == true) {
-
-					vida -= 450 - ataqueRandom;
-
-				}
-
-			} while (vidaChefe > 0);
-
-			if (vidaChefe <= 0) {
-
-				cout << "Você derrotou Artorias!!!" << endl;
+				break;
 
 			}
-			break;
 
+			bool bloquear = false;
+			int ataqueRandom = 0;
+			int danoNum = 0;
+			ataqueEscolhido = 0;
+
+			do {
+				cout << "Sua vida atual: " << vida << endl;
+				cout << "Sua estamina: " << estamina << endl;
+				cout << "Sua mana: " << mana << endl;
+				cout << "Ataques disponíveis:\n";
+				cout << "[1] " << atkS1 << endl;
+				cout << "[2] " << atkS2 << endl;
+				cout << "[3] " << atkS3 << endl;
+				cout << "Escolha o número do ataque: " << endl;
+				cin >> ataqueEscolhido;
+				limparConsole();
+
+				//Crio este loop para garantir que o jogador não digite nenhum caractere/número que não está presente nas opções
+				if (cin.fail()) {
+					cin.clear();            // limpa o erro
+					cin.ignore(1000, '\n'); // descarta a entrada inválida
+					cout << "Entrada inválida. Por favor digite um número entre 1 e 3." << endl;
+					limparConsole();
+					continue;
+				}
+
+				if (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3) {
+
+					cout << "Ataque não identificado";
+					limparConsole();
+
+				}
+
+			} while (ataqueEscolhido != 1 && ataqueEscolhido != 2 && ataqueEscolhido != 3);
+
+			if (ataqueEscolhido == 1) {
+
+				if (estamina >= 70 && mana >= 370) {
+
+					danoNum = atkN1; //Ataque padrão
+					estamina -= 70;
+					mana -= 370;
+
+				}
+				else {
+
+					//Comando utilizado para verificar a quantidade de estamina
+					cout << "Você não tem estamina/mana o suficiente para este ataque!" << endl;
+					limparConsole();
+					continue;
+
+				}
+
+			}
+
+			else if (ataqueEscolhido == 2) {
+
+				int escudo = 450;
+				bloquear = true;
+				mana -= 50;
+				vidaComEscudo = vida; // Salva a vida antes de aplicar o escudo
+				vida += escudo; // Aplica o escudo como bônus de vida
+
+			}
+
+			else if (ataqueEscolhido == 3) {
+
+				if (estamina >= 95) {
+
+					cura(vida); //Chama a função cura para realizar o revitalizar
+					estamina -= 95;
+
+				}
+				else {
+
+					//Comando utilizado para verificar a quantidade de estamina
+					cout << "Você não tem estamina o suficiente para este ataque!" << endl;
+					limparConsole();
+					continue;
+
+				}
+
+			}
+
+			else {
+
+				//Comando utilizado  para verificação do ataque utilizado
+				cout << "Ataque não identificado, por favor selecione um ataque novamente [Enter]";
+				limparConsole();
+				continue; //Volta ao início do loop
+
+			}
+
+			//If utilizado para conferir se o personagem deu dano ou não e realiza a impressão da quantidade aplicada
+			if (danoNum != 0) {
+
+				cout << "Você causou " << danoNum << " de dano!" << endl;
+				vidaChefe -= danoNum;
+
+			}
+			cout << "O chefe está com " << vidaChefe << " de vida!" << endl;
+			limparConsole();
+
+			cout << "É a vez de Artorias!" << endl;
+			limparConsole();
+
+			//If que invoca o ataque inimigo, em conjunto com a possibilidade de esquiva do jogador
+			int reflexoTeste = rand() % 301;
+			if (reflexoTeste > reflexo) {
+
+				int ataqueRandom = rand() % 3;
+				if (ataqueRandom == 0) {
+
+					danoArtorias1(danoChefe, vida);
+
+				}
+				else if (ataqueRandom == 1) {
+
+					danoArtorias2(danoChefe, vida);
+
+				}
+				else if (ataqueRandom == 2) {
+
+					danoArtorias3(danoChefe, vida);
+
+				}
+				else {
+
+					cout << "Você desviou do golpe de Artorias!" << endl;
+					limparConsole();
+
+				}
+
+			}
+			else {
+
+				cout << "Você desviou do ataque de Artorias!" << endl;
+				limparConsole();
+
+			}
+
+			if (escolhaRaca == "vampiro") {
+
+				//Momento em que a passiva da raça vampiro é aplicada
+				cout << "Você recebeu 30 pontos de vida devido à sua passiva de raça" << endl;
+				vida += 30;
+				limparConsole();
+
+			}
+
+			//Comando utilizado para adicionar estamina ao final do turno
+			estamina += 50;
+			cout << "Você recebeu 50 pontos de estamina" << endl;
+			limparConsole();
+
+			if (bloquear == true) {
+
+				// Remove o escudo e retorna a vida ao estado original
+				vida = vidaComEscudo;
+				cout << "Seu escudo mágico desapareceu. Sua vida voltou para " << vida << endl;
+				limparConsole();
+
+			}
+
+		} while (vidaChefe > 0);
+
+		if (vidaChefe <= 0) {
+
+			cout << "Você derrotou Artorias!!!" << endl;
+
+		}
+		break;
 	}
 
 }
