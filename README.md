@@ -138,7 +138,7 @@ Pontos a melhorar:
 - Escrever um relatório geral para uma melhor orientação do projeto
 - Concluir a função de combate
 
-  17/05/2025
+17/05/2025
 
 Pontos melhorados:
   - Conclusão de mecânica de estamina no combate da classe guerreiro
@@ -146,3 +146,14 @@ Pontos melhorados:
 Pontos a melhorar:
 - Conclusão da função de ataque para mago
 - Concluir a função de combate para as diversas classes
+
+
+22/05/2025
+
+Pontos melhorados:
+- Metade da função de combate para mago concluída
+- Comentários adicionados
+
+Pontos a melhorar:
+- Concluir de função combate para mago
+- Concluir a função combate para as diversas classes
