@@ -155,5 +155,9 @@ Pontos melhorados:
 - Comentários adicionados
 
 Pontos a melhorar:
+- Conclusão da função de ataque para mago
+- Concluir a função de combate para as diversas classes
+
+Pontos a melhorar:
 - Concluir de função combate para mago
 - Concluir a função combate para as diversas classes
