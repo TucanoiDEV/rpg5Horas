@@ -161,3 +161,7 @@ Pontos a melhorar:
 Pontos a melhorar:
 - Concluir de função combate para mago
 - Concluir a função combate para as diversas classes
+
+05/06/2025
+
+Conclusão: Infelizmente terei que reiniciar o mesmo por completo
