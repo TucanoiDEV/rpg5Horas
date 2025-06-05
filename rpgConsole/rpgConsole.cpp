@@ -773,7 +773,6 @@ void switchArtorias(int classeEscolhida, int& vida, int& estamina,
 		}
 		break;
 	}
-
 }
 
 int main() {
