@@ -28,6 +28,12 @@
 - Incluir a opção de usar porções.
 - Incluir a opção de atacar antes mesmo de selecionar um ataque.
 
+### Arquivos de separação de funções:
+arquivoPersonalizacao > Criar raça, Criar classe, Aplicação de passiva no ataque.
+arquivoInimigo > Atributos inimigo, Atk inimigo.
+arquivoCombate > Combate geral entre personagens
+arquivoCidade > Arena, Loja de armas, Loja de poções 
+
 Atualizações diárias:
 26/04/2025 
 
