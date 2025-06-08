@@ -171,6 +171,10 @@ Pontos a melhorar:
 - Concluir de função combate para mago
 - Concluir a função combate para as diversas classes
 
-05/06/2025
+07/06/2025
 
-Conclusão: Infelizmente terei que reiniciar o mesmo por completo
+Ponto melhorados:
+- Criação de arquivos adicionais para melhor organização do código
+
+Pontos melhorar:
+- Organizar internamente tais arquivos
