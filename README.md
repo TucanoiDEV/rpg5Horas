@@ -30,8 +30,11 @@
 
 ### Arquivos de separação de funções:
 arquivoPersonalizacao > Criar raça, Criar classe, Aplicação de passiva no ataque.
+
 arquivoInimigo > Atributos inimigo, Atk inimigo.
+
 arquivoCombate > Combate geral entre personagens
+
 arquivoCidade > Arena, Loja de armas, Loja de poções 
 
 Atualizações diárias:
