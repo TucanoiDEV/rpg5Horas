@@ -178,3 +178,10 @@ Ponto melhorados:
 
 Pontos melhorar:
 - Organizar internamente tais arquivos
+
+# Atualização Final do Projeto:
+
+16/05/2025
+
+Infelizmente não consegui divir da forma que queria os arquivos e por isso optei pelo abandono completo do projeto, como relatório final, tenho a dizer que aprendi muito com o mesmo
+e não me arrependo de nada que fiz, erros acontecem, e ele são necessários para a construção de vitórias, meu primeiro de muitos projeto se encerra aqui, foi uma ótima jornada!
